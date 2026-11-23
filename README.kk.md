@@ -56,7 +56,7 @@
 
 ## Орнату
 
-1. Мұрағатты жүктеңіз: **[Download ZIP](https://github.com/20launcher25/20launcher25/archive/refs/heads/main.zip)**.
+1. Мұрағатты жүктеңіз: **[ClaudeCodeLauncher.zip](https://github.com/20launcher25/20launcher25/releases/latest/download/ClaudeCodeLauncher.zip)** (65 КБ, әрқашан соңғы нұсқа, барлық нұсқалар [Releases](https://github.com/20launcher25/20launcher25/releases) бөлімінде).
 2. Оны толығымен кез келген қалтаға ашыңыз.
 3. **`Install.cmd`** файлын екі рет басыңыз.
 4. Жұмыс үстелінде және «Бастау» мәзірінде **Claude Code Launcher** белгішесі пайда болады.
@@ -95,9 +95,11 @@
 
 - **Өзгеріс ұсыну.** Fork жасап, pull request ашыңыз. Ол `main` тармағына сүйемелдеуші мақұлдағаннан кейін түседі.
 - **Скилл қосу.** [skills/README.md](skills/README.md) сипаттамасы бойынша `skills/<атауы>/SKILL.md` қалтасын қосыңыз.
-- **Нұсқа шығару.** `launcher.ps1` ішіндегі `$AppVersion` мәнін көтеріп, `changelog.json` файлына жазба қосыңыз да, манифестті қайта жинаңыз:
+- **Нұсқа шығару.** `launcher.ps1` ішіндегі `$AppVersion` мәнін көтеріп, `changelog.json` файлына жазба қосыңыз да, манифестті қайта жинаңыз. `main` тармағына біріктірілгеннен кейін мұрағатты жинап, релизді жариялаңыз:
   ```powershell
   powershell -NoProfile -ExecutionPolicy Bypass -File tools\Make-Manifest.ps1
+  powershell -NoProfile -ExecutionPolicy Bypass -File tools\Make-Release.ps1
+  gh release create v<нұсқа> dist\ClaudeCodeLauncher.zip --title "Claude Code Launcher <нұсқа>" --notes-file dist\release-notes.md
   ```
 
 ---

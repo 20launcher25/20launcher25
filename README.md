@@ -54,7 +54,7 @@
 
 ## Установка
 
-1. Скачайте архив: **[Download ZIP](https://github.com/20launcher25/20launcher25/archive/refs/heads/main.zip)**.
+1. Скачайте архив: **[ClaudeCodeLauncher.zip](https://github.com/20launcher25/20launcher25/releases/latest/download/ClaudeCodeLauncher.zip)** (65 КБ, всегда последняя версия, все версии в [Releases](https://github.com/20launcher25/20launcher25/releases)).
 2. Распакуйте его целиком в любую папку.
 3. Дважды щёлкните **`Install.cmd`**.
 4. На рабочем столе и в меню «Пуск» появится ярлык **Claude Code Launcher**.
@@ -93,9 +93,11 @@
 
 - **Предложить изменение.** Сделайте fork и откройте pull request. В ветку `main` он попадёт после одобрения сопровождающего.
 - **Добавить скилл.** Положите папку `skills/<имя>/SKILL.md`, как описано в [skills/README.md](skills/README.md).
-- **Выпустить версию.** Поднимите `$AppVersion` в `launcher.ps1`, добавьте запись в `changelog.json` и пересоберите манифест:
+- **Выпустить версию.** Поднимите `$AppVersion` в `launcher.ps1`, добавьте запись в `changelog.json` и пересоберите манифест. После слияния в `main` соберите архив и опубликуйте релиз:
   ```powershell
   powershell -NoProfile -ExecutionPolicy Bypass -File tools\Make-Manifest.ps1
+  powershell -NoProfile -ExecutionPolicy Bypass -File tools\Make-Release.ps1
+  gh release create v<версия> dist\ClaudeCodeLauncher.zip --title "Claude Code Launcher <версия>" --notes-file dist\release-notes.md
   ```
 
 ---

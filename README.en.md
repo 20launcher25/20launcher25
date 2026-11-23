@@ -56,7 +56,7 @@ Model, permission mode, language (Russian or English), how many projects to show
 
 ## Install
 
-1. Download the archive: **[Download ZIP](https://github.com/20launcher25/20launcher25/archive/refs/heads/main.zip)**.
+1. Download the archive: **[ClaudeCodeLauncher.zip](https://github.com/20launcher25/20launcher25/releases/latest/download/ClaudeCodeLauncher.zip)** (65 KB, always the latest version, every version is in [Releases](https://github.com/20launcher25/20launcher25/releases)).
 2. Unpack all of it into any folder.
 3. Double-click **`Install.cmd`**.
 4. A **Claude Code Launcher** shortcut appears on the desktop and in the Start menu.
@@ -95,9 +95,11 @@ The launcher runs on your computer and sends nothing about you. Its only network
 
 - **Propose a change.** Fork the repository and open a pull request. It reaches `main` after a maintainer approves it.
 - **Add a skill.** Add a `skills/<name>/SKILL.md` folder as described in [skills/README.md](skills/README.md).
-- **Release a version.** Bump `$AppVersion` in `launcher.ps1`, add an entry to `changelog.json` and rebuild the manifest:
+- **Release a version.** Bump `$AppVersion` in `launcher.ps1`, add an entry to `changelog.json` and rebuild the manifest. After merging into `main`, build the archive and publish a release:
   ```powershell
   powershell -NoProfile -ExecutionPolicy Bypass -File tools\Make-Manifest.ps1
+  powershell -NoProfile -ExecutionPolicy Bypass -File tools\Make-Release.ps1
+  gh release create v<version> dist\ClaudeCodeLauncher.zip --title "Claude Code Launcher <version>" --notes-file dist\release-notes.md
   ```
 
 ---
