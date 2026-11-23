@@ -1,4 +1,4 @@
-<#
+﻿<#
   Собирает manifest.json в корне репозитория Claude Code Launcher.
   Запускайте перед каждым коммитом с новой версией:
 
@@ -58,13 +58,13 @@ $clFile = Join-Path $Root 'changelog.json'
 if (Test-Path -LiteralPath $clFile) {
     $changelog = @([IO.File]::ReadAllText($clFile, [Text.Encoding]::UTF8).TrimStart([char]0xFEFF) | ConvertFrom-Json) | Select-Object -First 15
     if (-not ($changelog | Where-Object { $_.version -eq $version })) {
-        Write-Warning "В changelog.json нет записи для версии $version — в «Что нового» она будет пустой."
+        Write-Warning "В changelog.json нет записи для версии $version, поэтому «Что нового» будет пустым."
     }
 }
 
 # Файлы программы
 $files = @()
-foreach ($name in @('launcher.ps1', 'Install.cmd', 'Uninstall.cmd', 'Repair.cmd', 'README.txt', 'REPAIR.md', 'POLICY.md')) {
+foreach ($name in @('launcher.ps1', 'Install.cmd', 'Uninstall.cmd', 'Repair.cmd', 'README.txt', 'REPAIR.md', 'POLICY.md', 'POLICY.kk.md', 'POLICY.en.md')) {
     $p = Join-Path $Root $name
     if (Test-Path -LiteralPath $p) { $files += FileEntry (Get-Item -LiteralPath $p) }
 }
@@ -84,7 +84,7 @@ if (Test-Path -LiteralPath $skRoot) {
         if (-not (Test-Path -LiteralPath $md)) { continue }
         if ($d.Name -notmatch '^[A-Za-z0-9][A-Za-z0-9._-]*$') { Write-Warning "Пропущен скилл с недопустимым именем папки: $($d.Name)"; continue }
         $sf = @(Get-ChildItem -LiteralPath $d.FullName -Recurse -File | Sort-Object FullName | ForEach-Object { FileEntry $_ })
-        # ревизия: хеш от путей и хешей всех файлов — меняется при любой правке скилла
+        # ревизия: хеш от путей и хешей всех файлов, меняется при любой правке скилла
         $sig = ($sf | ForEach-Object { "$($_.path)=$($_.sha256)" }) -join "`n"
         $sha = [Security.Cryptography.SHA256]::Create()
         $rev = ([BitConverter]::ToString($sha.ComputeHash([Text.Encoding]::UTF8.GetBytes($sig))) -replace '-', '').Substring(0, 12).ToLowerInvariant()

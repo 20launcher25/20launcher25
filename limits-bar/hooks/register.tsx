@@ -163,7 +163,7 @@ export const register: Register = on => {
     }
 
     const percent = (pct: number | undefined) => {
-      if (pct === undefined) return <Text dimColor>–</Text>
+      if (pct === undefined) return <Text dimColor>·</Text>
       const p = Math.round(pct)
       return (
         <Text color={level(p)} weight="bold">

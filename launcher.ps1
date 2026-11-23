@@ -111,7 +111,7 @@ ru = @{
     home_sub = 'Выберите проект или откройте новую папку.'
     search_hint = '/ начните печатать, чтобы найти проект'; nothing = 'Ничего не найдено'
     sec_recent = 'Недавние проекты'; fit_note = '{0} из {1} · поиск покажет все'; found = 'найдено: {0}'
-    no_projects = 'Проектов пока нет — откройте любую папку ниже'
+    no_projects = 'Проектов пока нет. Откройте любую папку ниже'
     sec_more = 'Ещё'; desktop = 'Рабочий стол'; browse = 'Открыть другую папку…'; browse_meta = 'выбор в Проводнике'
     settings = 'Настройки'; settings_meta = 'модель, режим, язык'; exit = 'Выход'
     k_select = 'выбор'; k_open = 'открыть'; k_search = 'поиск'; k_hide = 'скрыть'; k_exit = 'выход'; k_back = 'назад'
@@ -144,7 +144,7 @@ ru = @{
     perm_manual = 'спрашивать всё'; perm_accept = 'сам правит файлы'; perm_auto = 'авто'; perm_plan = 'только план'
     update_claude = 'Обновить Claude Code'; update_sub = 'скачать и поставить свежую версию'
     fit_window = 'Подогнать окно под экран'; fit_window_sub = 'пересоздать ярлыки под этот монитор'
-    fit_done = 'Ярлыки обновлены — новый размер окна будет при следующем запуске'
+    fit_done = 'Ярлыки обновлены. Новый размер окна будет при следующем запуске'
     unhide = 'Вернуть скрытые проекты'; unhide_meta = 'скрыто: {0}'; unhide_done = 'Скрытые проекты снова в списке'
     open_dir = 'Открыть папку лаунчера'
     repair = 'Что-то сломалось? Починить с Claude'; repair_sub = 'Claude прочитает REPAIR.md, найдёт и исправит проблему'
@@ -160,13 +160,13 @@ ru = @{
     get_git = 'Скачать Git for Windows'; get_git_sub = 'Claude Code нужен Git в Windows'
     installing = 'Запускаю официальный установщик Claude Code…'
     not_found_after = 'Claude Code пока не виден. Закройте окно и запустите лаунчер заново.'
-    i_title = 'Установка'; i_wt = 'Windows Terminal'; i_wt_missing = 'не найден — будет обычное окно консоли'
-    i_claude = 'Claude Code'; i_claude_missing = 'не найден — лаунчер предложит установить при первом запуске'
-    i_git = 'Git for Windows'; i_git_missing = 'не найден — он нужен Claude Code'
+    i_title = 'Установка'; i_wt = 'Windows Terminal'; i_wt_missing = 'не найден, будет обычное окно консоли'
+    i_claude = 'Claude Code'; i_claude_missing = 'не найден, лаунчер предложит установить его при первом запуске'
+    i_git = 'Git for Windows'; i_git_missing = 'не найден, а он нужен Claude Code'
     i_files = 'Файлы лаунчера'; i_profile = 'Профиль Windows Terminal'; i_shortcuts = 'Ярлыки: рабочий стол и меню «Пуск»'
     i_done = 'Готово! На рабочем столе появился ярлык «Claude Code Launcher».'
-    i_launch = 'Enter — запустить сейчас     Esc — закрыть'
-    u_title = 'Удаление'; u_q = 'Удалить лаунчер? Claude Code и ваши сессии останутся.  Y — да, любая клавиша — нет'
+    i_launch = 'Enter: запустить сейчас     Esc: закрыть'
+    u_title = 'Удаление'; u_q = 'Удалить лаунчер? Claude Code и ваши сессии останутся.  Y: да, любая другая клавиша: нет'
     u_done = 'Лаунчер удалён.'; u_cancel = 'Отменено.'
     back = 'Назад'; yes = 'есть'; no = 'нет'
     sec_account = 'Аккаунт и лимиты'; info = 'Сведения и лимиты'; info_sub = 'аккаунт, план, лимиты подписки, версии программ'
@@ -184,7 +184,7 @@ ru = @{
     s_autoUpdate = 'Проверять при запуске'; s_autoUpdate_sub = 'тихо искать обновление при каждом запуске'
     upd_source = 'Источник обновлений'; upd_source_sub = 'GitHub-репозиторий, откуда берутся обновления и скиллы'
     src_prompt = 'Введите GitHub-репозиторий «владелец/репозиторий» (можно «@ветка» или ссылку github.com/…) или путь к папке.'
-    src_hint = 'Enter без текста — оставить как есть, «-» — вернуть по умолчанию.'
+    src_hint = 'Пустой Enter оставит как есть, «-» вернёт значение по умолчанию.'
     src_current = 'Сейчас: {0}'; src_none = 'не задан'
     sec_skills = 'Скиллы'; skills = 'Установить скиллы'; skills_sub = 'каталог скиллов из репозитория лаунчера'; skills_meta = 'из лаунчера: {0}'
     skills_title = 'Скиллы'; skills_hdr_sub = 'Ставятся в ~/.claude/skills. Claude Code увидит их в новой сессии.'
@@ -193,12 +193,12 @@ ru = @{
     sk_install_all = 'Установить все'; sk_install_all_sub = 'поставить новые и обновить установленные'
     sk_open_dir = 'Открыть папку скиллов'; sk_reload = 'Обновить каталог'
     sk_installing = 'Устанавливаю скилл «{0}»…'
-    sk_done = 'Скилл «{0}» установлен — он появится в новой сессии Claude'; sk_removed = 'Скилл «{0}» удалён'; sk_uptodate = '«{0}» уже последней версии'
+    sk_done = 'Скилл «{0}» установлен и появится в новой сессии Claude'; sk_removed = 'Скилл «{0}» удалён'; sk_uptodate = '«{0}» уже последней версии'
     sk_all_done = 'Установлено и обновлено: {0}'; sk_all_none = 'Всё уже установлено'
     sk_empty = 'В каталоге пока нет скиллов'; sk_loading = 'Загружаю каталог скиллов…'
     sk_overwrite_q = 'Заменить свой скилл «{0}»?'; sk_overwrite_sub = 'Такая папка уже есть в ~/.claude/skills, и поставлена она не из лаунчера.'; yes_replace = 'Да, заменить'
     sk_remove_q = 'Удалить скилл «{0}»?'; sk_remove_sub = 'Папка скилла будет удалена из ~/.claude/skills.'; yes_remove = 'Да, удалить'
-    sk_not_ours = 'Этот скилл поставлен не из лаунчера — удалите его вручную'
+    sk_not_ours = 'Этот скилл поставлен не из лаунчера, удалите его вручную'
     k_install = 'установить'; k_remove = 'удалить'
     upd_title = 'Обновление лаунчера'; upd_avail = 'Вышло обновление {0}'; upd_from_to = 'сейчас v{0}  {1}  станет v{2}'
     upd_home = 'Вышло обновление v{0}'; upd_home_hint = 'пункт «Обновить лаунчер» ниже'
@@ -207,7 +207,7 @@ ru = @{
     upd_install = 'Установить обновление'; upd_install_sub = 'скачать, проверить и перезапустить лаунчер'
     upd_later = 'Напомнить позже'; upd_skip = 'Пропустить эту версию'; upd_skip_sub = 'не напоминать, пока не выйдет следующая'
     upd_latest = 'У вас последняя версия v{0}'; upd_checking = 'Проверяю обновления…'
-    upd_failed = 'Не удалось проверить: {0}'; upd_nosrc = 'Источник обновлений не задан — укажите GitHub-репозиторий'
+    upd_failed = 'Не удалось проверить: {0}'; upd_nosrc = 'Источник обновлений не задан. Укажите GitHub-репозиторий'
     upd_check_again = 'Проверить снова'
     upd_downloading = 'Скачиваю обновление v{0}'; upd_verify_fail = 'файл повреждён (контрольная сумма не сошлась)'
     upd_applied = 'Обновлено до v{0}. Перезапускаю…'; upd_done_notice = 'Лаунчер обновлён до v{0}'
@@ -216,29 +216,29 @@ ru = @{
     health_title = 'Проверка компонентов'; health_hdr_sub = 'Всё, что нужно лаунчеру, и где он это искал.'
     health_ok = 'Всё на месте'; health_meta = 'проблем: {0}'; health_home = 'Не хватает компонентов: {0}'; health_home_hint = 'пункт «Проверка компонентов» ниже'
     h_claude = 'Claude Code'; h_claude_bad = 'не найден. Искал: PATH, ~\.localin, npm. Без него сессии не запустятся'
-    h_git = 'Git for Windows'; h_git_bad = 'не найден — Claude Code в Windows нужен Git'
-    h_wt = 'Windows Terminal'; h_wt_bad = 'не найден — лаунчер работает в обычной консоли, выглядит проще'
-    h_mod = 'Мод «{0}»'; h_mod_bad = 'нет папки — искал в {0}'; h_mod_off = 'выключен в настройках'
+    h_git = 'Git for Windows'; h_git_bad = 'не найден, а Claude Code в Windows нужен Git'
+    h_wt = 'Windows Terminal'; h_wt_bad = 'не найден, поэтому лаунчер работает в обычной консоли и выглядит проще'
+    h_mod = 'Мод «{0}»'; h_mod_bad = 'нет папки, искал в {0}'; h_mod_off = 'выключен в настройках'
     h_mod_usage = 'лимиты в лаунчере'; h_mod_bar = 'строка лимитов в Claude'
-    h_repair = 'REPAIR.md'; h_repair_bad = 'нет файла инструкции для починки — искал в {0}'
+    h_repair = 'REPAIR.md'; h_repair_bad = 'нет файла инструкции для починки, искал в {0}'
     h_settings = 'Настройки'; h_settings_bad = 'settings.json повреждён, сейчас настройки по умолчанию и не сохраняются: {0}'
-    h_profile = 'Профиль Windows Terminal'; h_profile_bad = 'нет файла профиля — ярлык может не открыться: {0}'
+    h_profile = 'Профиль Windows Terminal'; h_profile_bad = 'нет файла профиля, ярлык может не открыться: {0}'
     h_shortcut = 'Ярлык на рабочем столе'; h_shortcut_bad = 'не найден: {0}'
     h_plugin = 'Свой мод'; h_plugin_bad = 'папка из extraPlugins не найдена: {0}'
     h_usagefile = 'Файл лимитов'; h_usagefile_bad = 'из extraUsageFiles не найден: {0}'
     h_skill = 'Скилл «{0}»'; h_skill_bad = 'был поставлен из лаунчера, но папки больше нет'
-    h_installed = 'Установка'; h_portable = 'лаунчер запущен из {0}, а не из установленной копии — запустите Install.cmd'
-    h_source = 'Источник обновлений'; h_source_bad = 'не задан — обновления и скиллы недоступны'
+    h_installed = 'Установка'; h_portable = 'лаунчер запущен из {0}, а не из установленной копии. Запустите Install.cmd'
+    h_source = 'Источник обновлений'; h_source_bad = 'не задан, обновления и скиллы недоступны'
     fix_download = 'Скачать недостающие файлы'; fix_download_sub = 'из репозитория обновлений, только то, чего нет'
-    fix_download_none = 'Нечего скачивать — нужные файлы есть в репозитории?'; fix_downloaded = 'Скачано файлов: {0}'
+    fix_download_none = 'Нечего скачивать: все файлы на месте или их нет в репозитории'; fix_downloaded = 'Скачано файлов: {0}'
     fix_nosrc = 'Источник обновлений не задан: скачайте архив лаунчера заново и запустите Install.cmd'
     fix_claude = 'Установить Claude Code'; fix_git = 'Скачать Git for Windows'; fix_wt = 'Windows Terminal в Microsoft Store'
-    fix_reset = 'Сбросить настройки'; fix_reset_sub = 'старый файл сохранится как settings.bak.json'; fix_reset_done = 'Настройки сброшены, старые — в settings.bak.json'
+    fix_reset = 'Сбросить настройки'; fix_reset_sub = 'старый файл сохранится как settings.bak.json'; fix_reset_done = 'Настройки сброшены, старые лежат в settings.bak.json'
     fix_profile = 'Пересоздать профиль и ярлыки'; fix_profile_done = 'Профиль и ярлыки пересозданы'
     fix_settings_open = 'Открыть settings.json'; fix_skills = 'Переустановить скиллы'
     fix_install = 'Установить лаунчер'; fix_install_sub = 'скопировать в %LOCALAPPDATA% и создать ярлыки'
     copy_report = 'Скопировать отчёт'; copy_report_sub = 'чтобы отправить тому, кто поможет, или вставить в Claude'; report_copied = 'Отчёт скопирован в буфер обмена'
-    crash_title = 'Лаунчер остановился из-за ошибки'; crash_hint = 'Скопируйте текст выше или запустите Repair.cmd — Claude найдёт и исправит причину.'
+    crash_title = 'Лаунчер остановился из-за ошибки'; crash_hint = 'Скопируйте текст выше или запустите Repair.cmd, и Claude найдёт и исправит причину.'
     crash_copied = 'Текст ошибки скопирован в буфер обмена.'
     policy = 'Политика использования'; policy_sub = 'правила, какие данные использует лаунчер, ответственность'
     err_404 = 'в «{0}» нет manifest.json: проверьте имя репозитория и ветку, что он публичный и manifest.json закоммичен'
@@ -251,7 +251,7 @@ en = @{
     home_sub = 'Pick a project or open a new folder.'
     search_hint = '/ start typing to find a project'; nothing = 'Nothing found'
     sec_recent = 'Recent projects'; fit_note = '{0} of {1} · search shows all'; found = 'found: {0}'
-    no_projects = 'No projects yet — open any folder below'
+    no_projects = 'No projects yet. Open any folder below'
     sec_more = 'More'; desktop = 'Desktop'; browse = 'Open another folder…'; browse_meta = 'pick in Explorer'
     settings = 'Settings'; settings_meta = 'model, mode, language'; exit = 'Quit'
     k_select = 'select'; k_open = 'open'; k_search = 'search'; k_hide = 'hide'; k_exit = 'quit'; k_back = 'back'
@@ -284,7 +284,7 @@ en = @{
     perm_manual = 'ask for everything'; perm_accept = 'auto-accept edits'; perm_auto = 'auto'; perm_plan = 'plan only'
     update_claude = 'Update Claude Code'; update_sub = 'download and install the latest version'
     fit_window = 'Fit window to screen'; fit_window_sub = 'recreate shortcuts for this monitor'
-    fit_done = 'Shortcuts updated — the new window size applies next launch'
+    fit_done = 'Shortcuts updated. The new window size applies next launch'
     unhide = 'Restore hidden projects'; unhide_meta = 'hidden: {0}'; unhide_done = 'Hidden projects are back'
     open_dir = 'Open launcher folder'
     repair = 'Something broken? Fix it with Claude'; repair_sub = 'Claude reads REPAIR.md, finds the problem and fixes it'
@@ -300,13 +300,13 @@ en = @{
     get_git = 'Download Git for Windows'; get_git_sub = 'Claude Code needs Git on Windows'
     installing = 'Running the official Claude Code installer…'
     not_found_after = 'Claude Code is not visible yet. Close this window and start the launcher again.'
-    i_title = 'Setup'; i_wt = 'Windows Terminal'; i_wt_missing = 'not found — a plain console window will be used'
-    i_claude = 'Claude Code'; i_claude_missing = 'not found — the launcher will offer to install it on first run'
-    i_git = 'Git for Windows'; i_git_missing = 'not found — Claude Code needs it'
+    i_title = 'Setup'; i_wt = 'Windows Terminal'; i_wt_missing = 'not found, a plain console window will be used'
+    i_claude = 'Claude Code'; i_claude_missing = 'not found, the launcher will offer to install it on first run'
+    i_git = 'Git for Windows'; i_git_missing = 'not found, and Claude Code needs it'
     i_files = 'Launcher files'; i_profile = 'Windows Terminal profile'; i_shortcuts = 'Shortcuts: desktop and Start menu'
     i_done = 'Done! A “Claude Code Launcher” shortcut is on your desktop.'
-    i_launch = 'Enter — launch now     Esc — close'
-    u_title = 'Uninstall'; u_q = 'Uninstall the launcher? Claude Code and your sessions stay.  Y — yes, any key — no'
+    i_launch = 'Enter: launch now     Esc: close'
+    u_title = 'Uninstall'; u_q = 'Uninstall the launcher? Claude Code and your sessions stay.  Y: yes, any other key: no'
     u_done = 'Launcher removed.'; u_cancel = 'Cancelled.'
     back = 'Back'; yes = 'yes'; no = 'no'
     sec_account = 'Account and limits'; info = 'Info and limits'; info_sub = 'account, plan, subscription limits, versions'
@@ -333,12 +333,12 @@ en = @{
     sk_install_all = 'Install all'; sk_install_all_sub = 'install new ones and update installed ones'
     sk_open_dir = 'Open skills folder'; sk_reload = 'Reload catalog'
     sk_installing = 'Installing skill "{0}"…'
-    sk_done = 'Skill "{0}" installed — it appears in a new Claude session'; sk_removed = 'Skill "{0}" removed'; sk_uptodate = '"{0}" is already up to date'
+    sk_done = 'Skill "{0}" installed, it appears in a new Claude session'; sk_removed = 'Skill "{0}" removed'; sk_uptodate = '"{0}" is already up to date'
     sk_all_done = 'Installed and updated: {0}'; sk_all_none = 'Everything is already installed'
     sk_empty = 'The catalog has no skills yet'; sk_loading = 'Loading the skill catalog…'
     sk_overwrite_q = 'Replace your own skill "{0}"?'; sk_overwrite_sub = 'This folder already exists in ~/.claude/skills and was not installed by the launcher.'; yes_replace = 'Yes, replace'
     sk_remove_q = 'Remove skill "{0}"?'; sk_remove_sub = 'The skill folder will be deleted from ~/.claude/skills.'; yes_remove = 'Yes, remove'
-    sk_not_ours = 'This skill was not installed by the launcher — remove it manually'
+    sk_not_ours = 'This skill was not installed by the launcher, remove it manually'
     k_install = 'install'; k_remove = 'remove'
     upd_title = 'Launcher update'; upd_avail = 'Update {0} is out'; upd_from_to = 'now v{0}  {1}  will be v{2}'
     upd_home = 'Update v{0} is out'; upd_home_hint = 'see "Update launcher" below'
@@ -347,7 +347,7 @@ en = @{
     upd_install = 'Install update'; upd_install_sub = 'download, verify and restart the launcher'
     upd_later = 'Remind me later'; upd_skip = 'Skip this version'; upd_skip_sub = 'no reminders until the next one'
     upd_latest = 'You have the latest version v{0}'; upd_checking = 'Checking for updates…'
-    upd_failed = 'Check failed: {0}'; upd_nosrc = 'No update source set — enter a GitHub repository'
+    upd_failed = 'Check failed: {0}'; upd_nosrc = 'No update source set. Enter a GitHub repository'
     upd_check_again = 'Check again'
     upd_downloading = 'Downloading update v{0}'; upd_verify_fail = 'file is corrupted (checksum mismatch)'
     upd_applied = 'Updated to v{0}. Restarting…'; upd_done_notice = 'Launcher updated to v{0}'
@@ -356,21 +356,21 @@ en = @{
     health_title = 'Component check'; health_hdr_sub = 'Everything the launcher needs, and where it looked for it.'
     health_ok = 'All in place'; health_meta = 'problems: {0}'; health_home = 'Missing components: {0}'; health_home_hint = 'see "Component check" below'
     h_claude = 'Claude Code'; h_claude_bad = 'not found. Looked in PATH, ~\.localin, npm. Sessions cannot start without it'
-    h_git = 'Git for Windows'; h_git_bad = 'not found — Claude Code on Windows needs Git'
-    h_wt = 'Windows Terminal'; h_wt_bad = 'not found — the launcher uses a plain console and looks simpler'
-    h_mod = 'Mod "{0}"'; h_mod_bad = 'folder missing — looked in {0}'; h_mod_off = 'turned off in settings'
+    h_git = 'Git for Windows'; h_git_bad = 'not found, and Claude Code on Windows needs Git'
+    h_wt = 'Windows Terminal'; h_wt_bad = 'not found, so the launcher uses a plain console and looks simpler'
+    h_mod = 'Mod "{0}"'; h_mod_bad = 'folder missing, looked in {0}'; h_mod_off = 'turned off in settings'
     h_mod_usage = 'limits in the launcher'; h_mod_bar = 'limits line in Claude'
-    h_repair = 'REPAIR.md'; h_repair_bad = 'repair instructions missing — looked in {0}'
+    h_repair = 'REPAIR.md'; h_repair_bad = 'repair instructions missing, looked in {0}'
     h_settings = 'Settings'; h_settings_bad = 'settings.json is corrupted; defaults are in use and nothing is saved: {0}'
-    h_profile = 'Windows Terminal profile'; h_profile_bad = 'profile file missing — the shortcut may not open: {0}'
+    h_profile = 'Windows Terminal profile'; h_profile_bad = 'profile file missing, the shortcut may not open: {0}'
     h_shortcut = 'Desktop shortcut'; h_shortcut_bad = 'not found: {0}'
     h_plugin = 'Custom mod'; h_plugin_bad = 'extraPlugins folder not found: {0}'
     h_usagefile = 'Limits file'; h_usagefile_bad = 'extraUsageFiles entry not found: {0}'
     h_skill = 'Skill "{0}"'; h_skill_bad = 'was installed by the launcher, but its folder is gone'
-    h_installed = 'Installation'; h_portable = 'running from {0}, not the installed copy — run Install.cmd'
-    h_source = 'Update source'; h_source_bad = 'not set — updates and skills are unavailable'
+    h_installed = 'Installation'; h_portable = 'running from {0}, not the installed copy. Run Install.cmd'
+    h_source = 'Update source'; h_source_bad = 'not set, updates and skills are unavailable'
     fix_download = 'Download missing files'; fix_download_sub = 'from the update repository, only what is missing'
-    fix_download_none = 'Nothing to download — are the files in the repository?'; fix_downloaded = 'Files downloaded: {0}'
+    fix_download_none = 'Nothing to download: all files are in place or missing from the repository'; fix_downloaded = 'Files downloaded: {0}'
     fix_nosrc = 'No update source: download the launcher archive again and run Install.cmd'
     fix_claude = 'Install Claude Code'; fix_git = 'Download Git for Windows'; fix_wt = 'Windows Terminal in Microsoft Store'
     fix_reset = 'Reset settings'; fix_reset_sub = 'the old file is kept as settings.bak.json'; fix_reset_done = 'Settings reset, old ones are in settings.bak.json'
@@ -378,7 +378,7 @@ en = @{
     fix_settings_open = 'Open settings.json'; fix_skills = 'Reinstall skills'
     fix_install = 'Install the launcher'; fix_install_sub = 'copy to %LOCALAPPDATA% and create shortcuts'
     copy_report = 'Copy report'; copy_report_sub = 'to send to whoever helps you, or paste into Claude'; report_copied = 'Report copied to the clipboard'
-    crash_title = 'The launcher stopped because of an error'; crash_hint = 'Copy the text above or run Repair.cmd — Claude will find and fix the cause.'
+    crash_title = 'The launcher stopped because of an error'; crash_hint = 'Copy the text above or run Repair.cmd and Claude will find and fix the cause.'
     crash_copied = 'The error text is copied to the clipboard.'
     policy = 'Usage policy'; policy_sub = 'rules, what data the launcher uses, liability'
     err_404 = 'no manifest.json in "{0}": check the repository name and branch, that it is public and manifest.json is committed'
@@ -1165,7 +1165,7 @@ function Invoke-Install {
                     Copy-Item -LiteralPath $srcMod -Destination $dstMod -Recurse -Force
                 }
             }
-            foreach ($fn in @('REPAIR.md', 'Repair.cmd', 'README.txt', 'POLICY.md')) {
+            foreach ($fn in @('REPAIR.md', 'Repair.cmd', 'README.txt', 'POLICY.md', 'POLICY.kk.md', 'POLICY.en.md')) {
                 $src = Join-Path $PSScriptRoot $fn
                 if (Test-Path -LiteralPath $src) { Copy-Item -LiteralPath $src -Destination (Join-Path $AppDir $fn) -Force }
             }
@@ -1234,7 +1234,7 @@ $FetchBlock = {
             $cerr = $pr.StandardError.ReadToEnd(); $pr.WaitForExit()
             if ($pr.ExitCode -eq 0) { return , [IO.File]::ReadAllBytes($tmp) }
             if ($cerr -match 'error: (\d{3})') { throw "The remote server returned an error: ($($Matches[1]))" }
-            # прочие ошибки curl (сеть, прокси) — пробуем ещё раз через .NET ниже
+            # прочие ошибки curl (сеть, прокси): пробуем ещё раз через .NET ниже
         } finally { try { [IO.File]::Delete($tmp) } catch {} }
     }
     $req = [Net.HttpWebRequest]::Create($url)
@@ -1351,14 +1351,14 @@ function Get-Sha256([byte[]]$b) {
     $sha = [Security.Cryptography.SHA256]::Create()
     try { ([BitConverter]::ToString($sha.ComputeHash($b)) -replace '-', '').ToLowerInvariant() } finally { $sha.Dispose() }
 }
-# Скачивает файлы во временную папку и сверяет контрольные суммы. Ошибка — исключение, на месте ничего не тронуто.
+# Скачивает файлы во временную папку и сверяет контрольные суммы. Ошибка: исключение, на месте ничего не тронуто.
 function Download-Files($files, [string]$stage, [scriptblock]$onFile) {
     $src = Get-Source
     foreach ($f in @($files)) {
         $rel = [string]$f.path
         if (-not (Test-SafeRel $rel)) { throw "$(T 'upd_bad_path'): $rel" }
-        try { $bytes = [byte[]](& $FetchBlock $src $rel 30000) } catch { throw "$rel — $(Friendly-Error $_.Exception.Message)" }
-        if ($f.sha256 -and (Get-Sha256 $bytes) -ne ([string]$f.sha256).ToLowerInvariant()) { throw "$rel — $(T 'upd_verify_fail')" }
+        try { $bytes = [byte[]](& $FetchBlock $src $rel 30000) } catch { throw "$($rel): $(Friendly-Error $_.Exception.Message)" }
+        if ($f.sha256 -and (Get-Sha256 $bytes) -ne ([string]$f.sha256).ToLowerInvariant()) { throw "$($rel): $(T 'upd_verify_fail')" }
         $dst = Join-Path $stage ($rel -replace '/', '\')
         New-Item -ItemType Directory -Force -Path (Split-Path $dst) | Out-Null
         [IO.File]::WriteAllBytes($dst, $bytes)
@@ -1569,7 +1569,7 @@ function Show-Missing {
 
 # ═════════════════════════ проверка компонентов ═════════════════════════
 # Вместо молчаливого «не работает»: что не найдено, где искали и чем это починить.
-# State: ok | off | info | warn | err. Проблемы — warn и err.
+# State: ok | off | info | warn | err. Проблемы: warn и err.
 $WtStoreUrl = 'https://aka.ms/terminal'
 $HealthCount = 0
 function Get-Health {
@@ -1955,8 +1955,9 @@ function Show-Info {
             $chk = if ($Cfg.lastCheck) { try { TF 'inf_checked' (Format-Ago ([DateTimeOffset]::Parse([string]$Cfg.lastCheck, [Globalization.CultureInfo]::InvariantCulture).LocalDateTime)) } catch { '' } } else { T 'inf_never' }
             $lv = "$Ivory" + "v$AppVersion$R"
             if (Update-Pending) { $lv += "  $Green$($G.Upd) $(TF 'upd_meta_new' $Upd.Manifest.version)$R" }
-            $lv += "  $Dim$($G.Dot)  $(FitEnd (TF 'inf_source' (Format-Source (Get-Source))) ($W - 60))  $($G.Dot)  $chk$R"
             $lines += (& $lbl (T 'inf_launcher') $lv)
+            $srcTxt = FitEnd (Format-Source (Get-Source)) ([math]::Max(12, $W - 40 - $chk.Length))
+            $lines += (& $lbl (T 'sec_updates') "$Text2$srcTxt$R  $Dim$($G.Dot)  $chk$R")
             $lines += (& $lbl (T 'inf_skills') "$Text2$(TF 'inf_skills_val' (Count-LocalSkills) $Cfg.skills.Count)$R")
             $hasGit = Get-Command git.exe -ErrorAction SilentlyContinue
             $hasWt = Get-Command wt.exe -ErrorAction SilentlyContinue
@@ -1981,7 +1982,7 @@ function Show-Info {
     }
 }
 
-# Политика использования: страница в репозитории, без него — локальный POLICY.md.
+# Политика использования: страница в репозитории, без него: локальный POLICY.md.
 function Open-Policy {
     $s = Get-Source
     if ($s -and $s -notmatch '^[a-zA-Z]:[\\/]|^\\\\|^https?://') {
@@ -2201,7 +2202,7 @@ function Show-Home {
         }
         $hSections = {
             param($q)
-            # строки шапки: пустая + рамка + поиск (3) — всё, что не список
+            # строки шапки: пустая + рамка + поиск (3): всё, что не список
             $boxLines = (@('', '', '') + $(if ($Cfg.greeting) { @('') } else { @() }) + @('') + @(Usage-Lines (Get-Width)) + @(Home-Banner (Get-Width)) + @('')).Count + 2
             if (Update-Pending) { $boxLines += 1 }
             if ($HealthCount -gt 0) { $boxLines += 1 }

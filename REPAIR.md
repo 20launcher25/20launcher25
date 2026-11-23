@@ -21,7 +21,7 @@
 | Мод `limits-bar`: строка с моделью, контекстом и лимитами над полем ввода | `%LOCALAPPDATA%\ClaudeCodeLauncher\limits-bar\` |
 | Скомпилированная поддержка мыши (кэш, можно удалить, пересоберётся) | `%LOCALAPPDATA%\ClaudeCodeLauncherin\ccl-input-*.dll` |
 | Временные файлы обновлений и скиллов | `%LOCALAPPDATA%\ClaudeCodeLauncher	mp\` |
-| Скиллы, поставленные из лаунчера | `~/.claude/skills/<имя>`, список — поле `skills` в `settings.json` |
+| Скиллы, поставленные из лаунчера | `~/.claude/skills/<имя>`, список в поле `skills` в `settings.json` |
 | Источник обновлений и каталога скиллов | `$DefaultSource` в начале `launcher.ps1` или поле `updateSource` в `settings.json`; в корне репозитория лежит `manifest.json` |
 | Профиль Windows Terminal «Claude Code Launcher» и цветовая схема «Claude Launcher» | `%LOCALAPPDATA%\Microsoft\Windows Terminal\Fragments\ClaudeCodeLauncher\launcher.json` |
 | Ярлыки «Claude Code Launcher.lnk» | рабочий стол и меню «Пуск» → `wt.exe --size C,R --pos X,Y -p "Claude Code Launcher"` |
@@ -55,7 +55,7 @@
 ## Правила правки launcher.ps1 (на этом уже ломалось)
 
 - Сохраняй файл в **UTF-8 с BOM**. Без BOM Windows PowerShell 5.1 портит кириллицу и падает.
-- В PowerShell имена переменных **не различают регистр**: `$s` и `$S`, `$r` и `$R`, `$first` и `$First` — одна и та же переменная, а вложенные блоки видят переменные вызывающей функции. Не создавай локальных переменных с именами глобальных: `$Cfg`, `$G`, `$R`, `$E`, `$W`, `$H`, `$Clay`, `$Ivory`, `$Dim`, `$Muted`.
+- В PowerShell имена переменных **не различают регистр**: `$s` и `$S`, `$r` и `$R`, `$first` и `$First` это одна и та же переменная, а вложенные блоки видят переменные вызывающей функции. Не создавай локальных переменных с именами глобальных: `$Cfg`, `$G`, `$R`, `$E`, `$W`, `$H`, `$Clay`, `$Ivory`, `$Dim`, `$Muted`.
 - Не используй типографские апострофы и кавычки `’ ‘` внутри строк в одинарных кавычках: PowerShell считает их кавычками.
 - `[Console]::WindowWidth` падает без окна консоли: используй функцию `Console-Width`.
 - После правки проверь синтаксис (шаг 2) и запусти лаунчер (шаг 3).
