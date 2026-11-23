@@ -240,6 +240,7 @@ ru = @{
     copy_report = 'Скопировать отчёт'; copy_report_sub = 'чтобы отправить тому, кто поможет, или вставить в Claude'; report_copied = 'Отчёт скопирован в буфер обмена'
     crash_title = 'Лаунчер остановился из-за ошибки'; crash_hint = 'Скопируйте текст выше или запустите Repair.cmd — Claude найдёт и исправит причину.'
     crash_copied = 'Текст ошибки скопирован в буфер обмена.'
+    policy = 'Политика использования'; policy_sub = 'правила, какие данные использует лаунчер, ответственность'
     err_404 = 'в «{0}» нет manifest.json: проверьте имя репозитория и ветку, что он публичный и manifest.json закоммичен'
     err_private = 'нет доступа к репозиторию: он приватный? Для обновлений он должен быть публичным'
     err_net = 'нет связи с GitHub: проверьте интернет, прокси или антивирус'
@@ -379,6 +380,7 @@ en = @{
     copy_report = 'Copy report'; copy_report_sub = 'to send to whoever helps you, or paste into Claude'; report_copied = 'Report copied to the clipboard'
     crash_title = 'The launcher stopped because of an error'; crash_hint = 'Copy the text above or run Repair.cmd — Claude will find and fix the cause.'
     crash_copied = 'The error text is copied to the clipboard.'
+    policy = 'Usage policy'; policy_sub = 'rules, what data the launcher uses, liability'
     err_404 = 'no manifest.json in "{0}": check the repository name and branch, that it is public and manifest.json is committed'
     err_private = 'no access to the repository: is it private? It must be public for updates'
     err_net = 'cannot reach GitHub: check the internet connection, proxy or antivirus'
@@ -1163,7 +1165,7 @@ function Invoke-Install {
                     Copy-Item -LiteralPath $srcMod -Destination $dstMod -Recurse -Force
                 }
             }
-            foreach ($fn in @('REPAIR.md', 'Repair.cmd', 'README.txt')) {
+            foreach ($fn in @('REPAIR.md', 'Repair.cmd', 'README.txt', 'POLICY.md')) {
                 $src = Join-Path $PSScriptRoot $fn
                 if (Test-Path -LiteralPath $src) { Copy-Item -LiteralPath $src -Destination (Join-Path $AppDir $fn) -Force }
             }
@@ -1209,6 +1211,7 @@ function Get-Source { $s = [string]$Cfg.updateSource; if (-not $s) { $s = $Defau
 function Format-Source([string]$s) { if ($s) { $s } else { T 'src_none' } }
 $FetchBlock = {
     param([string]$src, [string]$rel, [int]$timeout)
+    $ErrorActionPreference = 'Stop'
     if ($src -match '^[a-zA-Z]:[\\/]|^\\\\') { return , [IO.File]::ReadAllBytes((Join-Path $src ($rel -replace '/', '\'))) }
     if ($src -match '^https?://') { $base = $src.TrimEnd('/') + '/' }
     else {
@@ -1218,6 +1221,22 @@ $FetchBlock = {
     }
     try { [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12 } catch {}
     $url = $base + (($rel -split '/' | ForEach-Object { [Uri]::EscapeDataString($_) }) -join '/')
+    # Сначала curl.exe из Windows: он сам переключается между IPv6 и IPv4. .NET в PowerShell 5.1 зависает
+    # до таймаута, если первый IPv6-адрес GitHub недоступен (так бывает у многих провайдеров).
+    $curl = Join-Path $env:SystemRoot 'System32\curl.exe'
+    if (Test-Path -LiteralPath $curl) {
+        $tmp = [IO.Path]::GetTempFileName()
+        try {
+            $psi = New-Object Diagnostics.ProcessStartInfo $curl
+            $psi.Arguments = "-fsSL --max-time $([math]::Ceiling($timeout / 1000)) -A ClaudeCodeLauncher -H `"Cache-Control: no-cache`" -o `"$tmp`" `"$url`""
+            $psi.UseShellExecute = $false; $psi.RedirectStandardError = $true; $psi.CreateNoWindow = $true
+            $pr = [Diagnostics.Process]::Start($psi)
+            $cerr = $pr.StandardError.ReadToEnd(); $pr.WaitForExit()
+            if ($pr.ExitCode -eq 0) { return , [IO.File]::ReadAllBytes($tmp) }
+            if ($cerr -match 'error: (\d{3})') { throw "The remote server returned an error: ($($Matches[1]))" }
+            # прочие ошибки curl (сеть, прокси) — пробуем ещё раз через .NET ниже
+        } finally { try { [IO.File]::Delete($tmp) } catch {} }
+    }
     $req = [Net.HttpWebRequest]::Create($url)
     $req.Timeout = $timeout; $req.ReadWriteTimeout = $timeout
     $req.UserAgent = 'ClaudeCodeLauncher'
@@ -1962,6 +1981,20 @@ function Show-Info {
     }
 }
 
+# Политика использования: страница в репозитории, без него — локальный POLICY.md.
+function Open-Policy {
+    $s = Get-Source
+    if ($s -and $s -notmatch '^[a-zA-Z]:[\\/]|^\\\\|^https?://') {
+        $repo = $s; $branch = 'main'
+        if ($s -match '^(.+?)@(.+)$') { $repo = $Matches[1]; $branch = $Matches[2] }
+        Start-Process "https://github.com/$repo/blob/$branch/POLICY.md"; return
+    }
+    foreach ($d in @($AppDir, $PSScriptRoot)) {
+        $f = Join-Path $d 'POLICY.md'
+        if ($d -and (Test-Path -LiteralPath $f)) { Start-Process notepad.exe -ArgumentList "`"$f`""; return }
+    }
+}
+
 function Show-Settings([switch]$First) {
     $setSel = 0; $notice = ''
     while ($true) {
@@ -2005,6 +2038,7 @@ function Show-Settings([switch]$First) {
                 $tools += MkItem -Label (T 'repair') -Sub (T 'repair_sub') -Icon $G.Star -Data @{ Kind = 'repair' }
                 $tools += MkItem -Label (T 'copy_prompt') -Sub (T 'copy_prompt_sub') -Icon $G.All -Data @{ Kind = 'copyprompt' }
             }
+            $tools += MkItem -Label (T 'policy') -Sub (T 'policy_sub') -Icon $G.All -Data @{ Kind = 'policy' }
             if ($installed) { $tools += MkItem -Label (T 'uninstall') -Sub (T 'uninstall_sub') -Icon $G.Exit -Data @{ Kind = 'uninstall' } }
             $secs = @()
             if (-not $First) { $secs += MkSection (T 'sec_account') $account }
@@ -2033,6 +2067,7 @@ function Show-Settings([switch]$First) {
             'done'    { return }
             'info'     { if ($pick.Action -eq 'enter') { Show-Info } }
             'health'   { if ($pick.Action -eq 'enter') { Show-Health } }
+            'policy'   { if ($pick.Action -eq 'enter') { Open-Policy } }
             'skills'   { if ($pick.Action -eq 'enter') { Show-Skills } }
             'source'   { if ($pick.Action -eq 'enter') { Edit-Source } }
             'checkupd' {

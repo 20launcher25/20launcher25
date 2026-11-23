@@ -64,7 +64,7 @@ if (Test-Path -LiteralPath $clFile) {
 
 # Файлы программы
 $files = @()
-foreach ($name in @('launcher.ps1', 'Install.cmd', 'Uninstall.cmd', 'Repair.cmd', 'README.txt', 'REPAIR.md')) {
+foreach ($name in @('launcher.ps1', 'Install.cmd', 'Uninstall.cmd', 'Repair.cmd', 'README.txt', 'REPAIR.md', 'POLICY.md')) {
     $p = Join-Path $Root $name
     if (Test-Path -LiteralPath $p) { $files += FileEntry (Get-Item -LiteralPath $p) }
 }
