@@ -15,7 +15,8 @@
                                      "Если лаунчер падает, на экране остаётся текст ошибки, а не пустое закрытое окно",
                                      "Политика использования: «Настройки → Политика использования»",
                                      "Загрузка с GitHub через встроенный curl.exe: не зависает, если у провайдера не работает IPv6",
-                                     "Экран «Сведения»: строка обновлений больше не вылезает за рамку"
+                                     "Экран «Сведения»: строка обновлений больше не вылезает за рамку",
+                                     "Каталог скиллов: 17 скиллов, скачиваются в несколько раз быстрее"
                                  ],
                           "en":  [
                                      "GitHub updates: the launcher checks for a new version, shows what\u0027s new and installs it in one click",
@@ -26,15 +27,16 @@
                                      "If the launcher crashes, the error stays on screen instead of the window just closing",
                                      "Usage policy: Settings → Usage policy",
                                      "Downloads from GitHub go through the built-in curl.exe and no longer hang when IPv6 is broken",
-                                     "Info screen: the updates line no longer overflows the frame"
+                                     "Info screen: the updates line no longer overflows the frame",
+                                     "Skill catalog: 17 skills, downloads are several times faster"
                                  ]
                       }
                   ],
     "files":  [
                   {
                       "path":  "launcher.ps1",
-                      "sha256":  "4c79be5449449b2dbe9f74220e3f66250ad332b9c82292f8ce153f607a055e95",
-                      "size":  146005
+                      "sha256":  "f4584e8f1af4b9b3efa1b92b5908dbdff4c28c19af0c95dc0e4f83aa4f97df16",
+                      "size":  148464
                   },
                   {
                       "path":  "Install.cmd",
