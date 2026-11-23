@@ -16,7 +16,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?style=flat-square" alt="Windows 10 | 11">
   <img src="https://img.shields.io/badge/PowerShell-5.1-5391FE?style=flat-square" alt="PowerShell 5.1">
-  <img src="https://img.shields.io/github/last-commit/20launcher25/20launcher25?style=flat-square&color=D97757&label=обновлён" alt="Последнее обновление">
+  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2F20launcher25%2F20launcher25%2Fmain%2Fmanifest.json&query=%24.version&prefix=v&label=%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F&color=D97757&style=flat-square" alt="Версия">
 </p>
 
 <p align="center">
@@ -33,7 +33,7 @@
 
 <p align="center"><img src="assets/screenshots/info.png" width="720" alt="Сведения и лимиты"></p>
 
-**Обновления в один щелчок.** Когда выходит новая версия, лаунчер говорит об этом сам и показывает, что изменилось. Каждый файл сверяется по контрольной сумме, поэтому повреждённое обновление не установится.
+**Обновления в один щелчок.** Когда выходит новая версия, лаунчер говорит об этом сам и показывает, что изменилось. Каждый файл сверяется по контрольной сумме, поэтому повреждённое обновление не установится. За новыми версиями самого Claude Code лаунчер тоже следит: покажет, что изменилось, и обновит одной кнопкой.
 
 <p align="center"><img src="assets/screenshots/update.png" width="720" alt="Экран обновления"></p>
 

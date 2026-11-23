@@ -16,7 +16,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?style=flat-square" alt="Windows 10 | 11">
   <img src="https://img.shields.io/badge/PowerShell-5.1-5391FE?style=flat-square" alt="PowerShell 5.1">
-  <img src="https://img.shields.io/github/last-commit/20launcher25/20launcher25?style=flat-square&color=D97757&label=жаңартылды" alt="Соңғы жаңарту">
+  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2F20launcher25%2F20launcher25%2Fmain%2Fmanifest.json&query=%24.version&prefix=v&label=%D0%BD%D2%B1%D1%81%D2%9B%D0%B0&color=D97757&style=flat-square" alt="Нұсқа">
 </p>
 
 <p align="center">
@@ -35,7 +35,7 @@
 
 <p align="center"><img src="assets/screenshots/info.png" width="720" alt="Мәліметтер мен лимиттер"></p>
 
-**Бір басумен жаңарту.** Жаңа нұсқа шыққанда лаунчер бұл туралы өзі айтып, не өзгергенін көрсетеді. Әр файл бақылау сомасы бойынша тексеріледі, сондықтан бүлінген жаңарту орнатылмайды.
+**Бір басумен жаңарту.** Жаңа нұсқа шыққанда лаунчер бұл туралы өзі айтып, не өзгергенін көрсетеді. Әр файл бақылау сомасы бойынша тексеріледі, сондықтан бүлінген жаңарту орнатылмайды. Лаунчер Claude Code-тың жаңа нұсқаларын да бақылайды: не өзгергенін көрсетіп, бір батырмамен жаңартады.
 
 <p align="center"><img src="assets/screenshots/update.png" width="720" alt="Жаңарту экраны"></p>
 

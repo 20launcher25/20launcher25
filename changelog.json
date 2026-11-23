@@ -1,5 +1,19 @@
 [
   {
+    "version": "2.1.0",
+    "date": "2026-11-23",
+    "ru": [
+      "Уведомление о новой версии Claude Code: плашка на главном экране, список изменений и обновление одной кнопкой",
+      "Каталог из 17 скиллов: «Настройки → Установить скиллы»",
+      "Скиллы и обновления скачиваются в несколько раз быстрее"
+    ],
+    "en": [
+      "New Claude Code version notice: a banner on the home screen, the list of changes and a one-click update",
+      "A catalog of 17 skills: Settings → Install skills",
+      "Skills and updates download several times faster"
+    ]
+  },
+  {
     "version": "2.0.0",
     "date": "2026-11-23",
     "ru": [
@@ -11,8 +25,7 @@
       "Если лаунчер падает, на экране остаётся текст ошибки, а не пустое закрытое окно",
       "Политика использования: «Настройки → Политика использования»",
       "Загрузка с GitHub через встроенный curl.exe: не зависает, если у провайдера не работает IPv6",
-      "Экран «Сведения»: строка обновлений больше не вылезает за рамку",
-      "Каталог скиллов: 17 скиллов, скачиваются в несколько раз быстрее"
+      "Экран «Сведения»: строка обновлений больше не вылезает за рамку"
     ],
     "en": [
       "GitHub updates: the launcher checks for a new version, shows what's new and installs it in one click",
@@ -23,8 +36,7 @@
       "If the launcher crashes, the error stays on screen instead of the window just closing",
       "Usage policy: Settings → Usage policy",
       "Downloads from GitHub go through the built-in curl.exe and no longer hang when IPv6 is broken",
-      "Info screen: the updates line no longer overflows the frame",
-      "Skill catalog: 17 skills, downloads are several times faster"
+      "Info screen: the updates line no longer overflows the frame"
     ]
   }
 ]
