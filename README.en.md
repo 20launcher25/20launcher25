@@ -16,7 +16,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D4?style=flat-square" alt="Windows 10 | 11">
   <img src="https://img.shields.io/badge/PowerShell-5.1-5391FE?style=flat-square" alt="PowerShell 5.1">
-  <img src="https://img.shields.io/github/last-commit/20launcher25/20launcher25?style=flat-square&color=D97757&label=updated" alt="Last update">
+  <img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2F20launcher25%2F20launcher25%2Fmain%2Fmanifest.json&query=%24.version&prefix=v&label=version&color=D97757&style=flat-square" alt="Version">
 </p>
 
 <p align="center">
@@ -35,7 +35,7 @@
 
 <p align="center"><img src="assets/screenshots/info.png" width="720" alt="Info and limits"></p>
 
-**One-click updates.** When a new version is out, the launcher tells you and shows what changed. Every file is checked against its checksum, so a damaged update never gets installed.
+**One-click updates.** When a new version is out, the launcher tells you and shows what changed. Every file is checked against its checksum, so a damaged update never gets installed. The launcher watches for new Claude Code versions too: it shows what changed and updates with one button.
 
 <p align="center"><img src="assets/screenshots/update.png" width="720" alt="Update screen"></p>
 

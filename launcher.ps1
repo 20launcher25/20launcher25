@@ -16,7 +16,7 @@
 param([switch]$Install, [switch]$Uninstall, [switch]$Quiet, [switch]$Updated)
 
 $ErrorActionPreference = 'Stop'
-$AppVersion   = '2.0.0'
+$AppVersion   = '2.1.0'
 # Репозиторий с обновлениями и каталогом скиллов: 'владелец/репозиторий' или 'владелец/репозиторий@ветка'.
 $DefaultSource = '20launcher25/20launcher25'
 $AppId        = 'ClaudeCodeLauncher'
@@ -65,7 +65,7 @@ $Cfg = [ordered]@{
     lang = (Get-DefaultLang); projects = 'auto'; defaultAction = 'new'
     permissionMode = 'default'; model = 'default'; greeting = $true; showLimits = $true; limitsBar = $true
     hidden = @(); firstRunDone = $false; verExe = ''; verStamp = ''; version = ''
-    autoUpdate = $true; updateSource = ''; skipVersion = ''; lastCheck = ''; latestVersion = ''
+    autoUpdate = $true; updateSource = ''; skipVersion = ''; lastCheck = ''; latestVersion = ''; skipClaudeVersion = ''
     skills = @{}; extraPlugins = @(); extraUsageFiles = @()
 }
 function Load-Settings {
@@ -181,7 +181,18 @@ ru = @{
     sec_updates = 'Обновления'
     check_upd = 'Проверить обновления'; check_upd_sub = 'новая версия лаунчера из GitHub-репозитория'
     upd_meta_latest = 'v{0} · последняя'; upd_meta_new = 'вышла v{0}'; upd_meta_none = 'источник не задан'; upd_meta_err = 'ошибка'
-    s_autoUpdate = 'Проверять при запуске'; s_autoUpdate_sub = 'тихо искать обновление при каждом запуске'
+    s_autoUpdate = 'Проверять при запуске'; s_autoUpdate_sub = 'тихо искать обновления лаунчера и Claude Code при каждом запуске'
+    cc_title = 'Обновление Claude Code'; cc_avail = 'Вышел Claude Code v{0}'; cc_from_to = 'сейчас v{0}  {1}  станет v{2}  ·  канал {3}'
+    cc_latest = 'У вас последняя версия Claude Code v{0}'; cc_checking = 'Проверяю версию Claude Code…'
+    cc_notes_loading = 'Загружаю список изменений…'; cc_notes_failed = 'Список изменений не загрузился: {0}'
+    cc_more = 'и ещё {0}, полный список по кнопке ниже'; changes = @('изменение', 'изменения', 'изменений')
+    cc_install = 'Обновить сейчас'; cc_install_sub = 'запустит claude update, сессии и настройки останутся'
+    cc_full = 'Полный список изменений'; cc_full_sub = 'CHANGELOG.md на GitHub'
+    cc_home = 'Вышел Claude Code v{0}'; cc_home_hint = 'у вас v{0}'
+    cc_item = 'Обновить Claude Code до v{0}'; cc_item_sub = 'у вас v{0}, внутри список изменений'
+    cc_meta_new = 'вышла v{0}'; cc_meta_latest = 'v{0} · последняя'
+    cc_running = 'Обновляю Claude Code…'; cc_done = 'Claude Code обновлён до v{0}'
+    cc_same = 'Версия не изменилась (v{0}). Причина написана выше.'; cc_no_claude = 'Claude Code не найден'
     upd_source = 'Источник обновлений'; upd_source_sub = 'GitHub-репозиторий, откуда берутся обновления и скиллы'
     src_prompt = 'Введите GitHub-репозиторий «владелец/репозиторий» (можно «@ветка» или ссылку github.com/…) или путь к папке.'
     src_hint = 'Пустой Enter оставит как есть, «-» вернёт значение по умолчанию.'
@@ -321,7 +332,18 @@ en = @{
     sec_updates = 'Updates'
     check_upd = 'Check for updates'; check_upd_sub = 'new launcher version from the GitHub repository'
     upd_meta_latest = 'v{0} · latest'; upd_meta_new = 'v{0} is out'; upd_meta_none = 'no source set'; upd_meta_err = 'error'
-    s_autoUpdate = 'Check on startup'; s_autoUpdate_sub = 'quietly look for an update on every launch'
+    s_autoUpdate = 'Check on startup'; s_autoUpdate_sub = 'quietly look for launcher and Claude Code updates on every launch'
+    cc_title = 'Claude Code update'; cc_avail = 'Claude Code v{0} is out'; cc_from_to = 'now v{0}  {1}  will be v{2}  ·  channel {3}'
+    cc_latest = 'You have the latest Claude Code v{0}'; cc_checking = 'Checking the Claude Code version…'
+    cc_notes_loading = 'Loading the list of changes…'; cc_notes_failed = 'Could not load the list of changes: {0}'
+    cc_more = 'and {0} more, see the full list below'; changes = @('change', 'changes')
+    cc_install = 'Update now'; cc_install_sub = 'runs claude update, sessions and settings stay'
+    cc_full = 'Full list of changes'; cc_full_sub = 'CHANGELOG.md on GitHub'
+    cc_home = 'Claude Code v{0} is out'; cc_home_hint = 'you have v{0}'
+    cc_item = 'Update Claude Code to v{0}'; cc_item_sub = 'you have v{0}, see what changed inside'
+    cc_meta_new = 'v{0} is out'; cc_meta_latest = 'v{0} · latest'
+    cc_running = 'Updating Claude Code…'; cc_done = 'Claude Code updated to v{0}'
+    cc_same = 'The version did not change (v{0}). The reason is shown above.'; cc_no_claude = 'Claude Code not found'
     upd_source = 'Update source'; upd_source_sub = 'GitHub repository for updates and skills'
     src_prompt = 'Enter a GitHub repository "owner/repo" (optionally "@branch" or a github.com/... link) or a folder path.'
     src_hint = 'Empty Enter keeps the current value, "-" restores the default.'
@@ -1286,15 +1308,119 @@ function Start-UpdateCheck {
         $Upd.State = 'checking'
     } catch { $Upd.State = 'error'; $Upd.Error = $_.Exception.Message }
 }
-function Poll-Background {
-    $j = $Upd.Job
-    if (-not $j -or -not $j.Handle.IsCompleted) { return $false }
+function Receive-Job0($j) {
     $out = ''
     try { $out = (@($j.PS.EndInvoke($j.Handle)) | ForEach-Object { [string]$_ }) -join '' } catch { $out = 'ERR:' + $_.Exception.Message }
     try { $j.PS.Dispose() } catch {}
-    $Upd.Job = $null
-    Set-UpdateResult $out
-    $true
+    $out
+}
+# Вызывается из цикла ожидания экрана: $true, если пришёл ответ и экран надо перерисовать.
+function Poll-Background {
+    $changed = $false
+    $j = $Upd.Job
+    if ($j -and $j.Handle.IsCompleted) { $out = Receive-Job0 $j; $Upd.Job = $null; Set-UpdateResult $out; $changed = $true }
+    $cj = $Cc.Job
+    if ($cj -and $cj.Handle.IsCompleted) { $out = Receive-Job0 $cj; $Cc.Job = $null; Set-ClaudeResult $out; $changed = $true }
+    $changed
+}
+
+# ───────── обновления самого Claude Code ─────────
+# Последняя версия берётся из npm (dist-tags), канал latest или stable, как autoUpdatesChannel
+# в ~/.claude/settings.json. Список изменений из официального CHANGELOG.md. Ставит claude update.
+$NpmRegistry   = 'https://registry.npmjs.org'
+$NpmTagsPath   = '-/package/@anthropic-ai/claude-code/dist-tags'
+$CcRawBase     = 'https://raw.githubusercontent.com/anthropics/claude-code/main'
+$CcChangelogUrl = 'https://github.com/anthropics/claude-code/blob/main/CHANGELOG.md'
+$Cc = [pscustomobject]@{ State = 'idle'; Latest = ''; Channel = 'latest'; Error = ''; Job = $null; Notes = $null; NotesError = '' }
+function Get-ClaudeChannel {
+    try {
+        $f = Join-Path $env:USERPROFILE '.claude\settings.json'
+        if (Test-Path -LiteralPath $f) {
+            $ch = [string](Get-Content -LiteralPath $f -Raw -Encoding UTF8 | ConvertFrom-Json).autoUpdatesChannel
+            if ($ch -eq 'stable') { return 'stable' }
+        }
+    } catch {}
+    'latest'
+}
+function Set-ClaudeResult([string]$text) {
+    if ($text.StartsWith('ERR:')) { $Cc.State = 'error'; $Cc.Error = Friendly-Error $text.Substring(4).Trim(); return }
+    try {
+        $tags = $text | ConvertFrom-Json
+        $v = [string]$tags.($Cc.Channel); if (-not $v) { $v = [string]$tags.latest }
+        if (-not $v) { throw 'npm dist-tags: no version' }
+        $Cc.Latest = $v; $Cc.Error = ''
+        $Cc.State = if ($ClaudeVersion -and (Test-Newer $v $ClaudeVersion)) { 'available' } else { 'latest' }
+    } catch { $Cc.State = 'error'; $Cc.Error = $_.Exception.Message }
+}
+function Start-ClaudeCheck {
+    if ($Cc.Job -or -not $ClaudeExe) { return }
+    $Cc.Channel = Get-ClaudeChannel
+    try {
+        $ps = [powershell]::Create()
+        [void]$ps.AddScript({
+            param($fetch, $base, $path)
+            try { [Text.Encoding]::UTF8.GetString([byte[]](& ([scriptblock]::Create($fetch)) $base $path 10000)) }
+            catch { 'ERR:' + $_.Exception.Message }
+        }.ToString())
+        [void]$ps.AddArgument($FetchBlock.ToString()); [void]$ps.AddArgument($NpmRegistry); [void]$ps.AddArgument($NpmTagsPath)
+        $Cc.Job = @{ PS = $ps; Handle = $ps.BeginInvoke() }
+        $Cc.State = 'checking'
+    } catch { $Cc.State = 'error'; $Cc.Error = $_.Exception.Message }
+}
+function Check-ClaudeNow {
+    while ($Cc.Job -and -not $Cc.Job.Handle.IsCompleted) { Start-Sleep -Milliseconds 50 }
+    [void](Poll-Background)
+    if (-not $ClaudeExe) { $Cc.State = 'error'; $Cc.Error = T 'cc_no_claude'; return }
+    $Cc.Channel = Get-ClaudeChannel
+    try { Set-ClaudeResult ([Text.Encoding]::UTF8.GetString([byte[]](& $FetchBlock $NpmRegistry $NpmTagsPath 10000))) }
+    catch { $Cc.State = 'error'; $Cc.Error = Friendly-Error $_.Exception.Message }
+}
+function Claude-Pending { $Cc.State -eq 'available' -and $Cc.Latest -and $Cc.Latest -ne [string]$Cfg.skipClaudeVersion }
+# Разделы CHANGELOG.md новее установленной версии и не новее последней: @{ Version; Items }.
+function Get-ClaudeNotes {
+    if ($null -eq $Cc.Notes) {
+        try { $Cc.Notes = [Text.Encoding]::UTF8.GetString([byte[]](& $FetchBlock $CcRawBase 'CHANGELOG.md' 20000)); $Cc.NotesError = '' }
+        catch { $Cc.NotesError = Friendly-Error $_.Exception.Message; return @() }
+    }
+    $out = @()
+    foreach ($sec in ([regex]::Split($Cc.Notes, '(?m)^## '))) {
+        $first = ($sec -split "`n", 2)[0].Trim()
+        if ($first -notmatch '^(\d+\.\d+\.\d+)') { continue }
+        $ver = $Matches[1]
+        if (-not (Test-Newer $ver $ClaudeVersion) -or (Test-Newer $ver $Cc.Latest)) { continue }
+        $items = @([regex]::Matches($sec, '(?m)^- (.+)$') | ForEach-Object { ($_.Groups[1].Value -replace '`', '').Trim() })
+        $out += [pscustomobject]@{ Version = $ver; Items = $items }
+    }
+    $out
+}
+function Format-ClaudeNotes($notes, [int]$width, [int]$maxLines = 15) {
+    $out = @(); $total = 0; $shown = 0
+    foreach ($cn in $notes) { $total += $cn.Items.Count }
+    foreach ($cn in $notes) {
+        if ($out.Count -ge $maxLines - 2) { break }
+        $out += "   $Text2${Bold}v$($cn.Version)$NoBold$R"
+        foreach ($ci in ($cn.Items | Select-Object -First 3)) {
+            $wl = @(Wrap-Text $ci ($width - 16))
+            if ($out.Count + [math]::Min(2, $wl.Count) -gt $maxLines - 1) { break }
+            $out += "     $Clay$($G.Bul)$R $Ivory$($wl[0])$R"
+            if ($wl.Count -gt 1) { $out += "       $Ivory$(FitEnd (($wl[1..($wl.Count - 1)]) -join ' ') ($width - 16))$R" }
+            $shown++
+        }
+    }
+    if ($total -gt $shown) { $out += "     $Dim$(TF 'cc_more' (Plural ($total - $shown) (T 'changes')))$R" }
+    $out
+}
+function Install-ClaudeUpdate {
+    Clear-Screen; Input-Restore; [Console]::CursorVisible = $true
+    [Console]::WriteLine("`n  $Clay$($G.Star)$R $Ivory$(T 'cc_running')$R`n")
+    $before = $ClaudeVersion
+    if ($ClaudeExe) { try { & $ClaudeExe update } catch { [Console]::WriteLine("  $Red$($_.Exception.Message)$R") } }
+    Find-Claude
+    $Cc.Notes = $null
+    if ($ClaudeVersion -and $ClaudeVersion -ne $before) { [Console]::WriteLine("`n  $Green$($G.Ok)$R $Ivory$(TF 'cc_done' $ClaudeVersion)$R") }
+    else { [Console]::WriteLine("`n  $Amber!$R $Ivory$(TF 'cc_same' $ClaudeVersion)$R") }
+    Check-ClaudeNow
+    Wait-AnyKey
 }
 function Wait-UpdateCheck { while ($Upd.Job -and -not $Upd.Job.Handle.IsCompleted) { Start-Sleep -Milliseconds 50 }; [void](Poll-Background) }
 function Check-UpdateNow {
@@ -1354,15 +1480,52 @@ function Get-Sha256([byte[]]$b) {
 # Скачивает файлы во временную папку и сверяет контрольные суммы. Ошибка: исключение, на месте ничего не тронуто.
 function Download-Files($files, [string]$stage, [scriptblock]$onFile) {
     $src = Get-Source
-    foreach ($f in @($files)) {
+    $list = @($files)
+    foreach ($f in $list) { if (-not (Test-SafeRel ([string]$f.path))) { throw "$(T 'upd_bad_path'): $($f.path)" } }
+    New-Item -ItemType Directory -Force -Path $stage | Out-Null
+    # сначала вся пачка одним запуском curl; чего не хватило или не сошлось, докачиваем по одному
+    if ($list.Count -gt 1) { try { Fetch-Batch (Get-RawBase $src) @($list | ForEach-Object { [string]$_.path }) $stage } catch {} }
+    foreach ($f in $list) {
         $rel = [string]$f.path
-        if (-not (Test-SafeRel $rel)) { throw "$(T 'upd_bad_path'): $rel" }
-        try { $bytes = [byte[]](& $FetchBlock $src $rel 30000) } catch { throw "$($rel): $(Friendly-Error $_.Exception.Message)" }
-        if ($f.sha256 -and (Get-Sha256 $bytes) -ne ([string]$f.sha256).ToLowerInvariant()) { throw "$($rel): $(T 'upd_verify_fail')" }
+        $want = ([string]$f.sha256).ToLowerInvariant()
         $dst = Join-Path $stage ($rel -replace '/', '\')
+        $bytes = $null
+        if (Test-Path -LiteralPath $dst) { $bytes = [IO.File]::ReadAllBytes($dst) }
+        if ($null -eq $bytes -or ($want -and (Get-Sha256 $bytes) -ne $want)) {
+            try { $bytes = [byte[]](& $FetchBlock $src $rel 30000) } catch { throw "$($rel): $(Friendly-Error $_.Exception.Message)" }
+        }
+        if ($want -and (Get-Sha256 $bytes) -ne $want) { throw "$($rel): $(T 'upd_verify_fail')" }
         New-Item -ItemType Directory -Force -Path (Split-Path $dst) | Out-Null
         [IO.File]::WriteAllBytes($dst, $bytes)
         if ($onFile) { & $onFile $rel }
+    }
+}
+# Адрес, от которого считаются пути файлов; для папки на диске $null.
+function Get-RawBase([string]$src) {
+    if (-not $src -or $src -match '^[a-zA-Z]:[\\/]|^\\\\') { return $null }
+    if ($src -match '^https?://') { return ($src.TrimEnd('/') + '/') }
+    $repo = $src; $branch = 'main'
+    if ($src -match '^(.+?)@(.+)$') { $repo = $Matches[1]; $branch = $Matches[2] }
+    "https://raw.githubusercontent.com/$repo/$branch/"
+}
+# Много файлов одним запуском curl.exe: соединение не открывается заново на каждый файл.
+# Пути относительные, curl работает в папке $stage, поэтому кириллица в пути ему не мешает.
+function Fetch-Batch([string]$base, [string[]]$rels, [string]$stage) {
+    $curl = Join-Path $env:SystemRoot 'System32\curl.exe'
+    if (-not $base -or -not (Test-Path -LiteralPath $curl)) { return }
+    for ($i = 0; $i -lt $rels.Count; $i += 40) {
+        $part = $rels[$i..([math]::Min($i + 39, $rels.Count - 1))]
+        $sb = New-Object Text.StringBuilder
+        [void]$sb.Append('-fsSL --create-dirs --max-time 300 -A ClaudeCodeLauncher -H "Cache-Control: no-cache"')
+        foreach ($rel in $part) {
+            $url = $base + (($rel -split '/' | ForEach-Object { [Uri]::EscapeDataString($_) }) -join '/')
+            [void]$sb.Append(" -o `"$($rel -replace '/', '\')`" `"$url`"")
+        }
+        $psi = New-Object Diagnostics.ProcessStartInfo $curl
+        $psi.Arguments = $sb.ToString(); $psi.WorkingDirectory = $stage
+        $psi.UseShellExecute = $false; $psi.CreateNoWindow = $true
+        $pr = [Diagnostics.Process]::Start($psi)
+        if (-not $pr.WaitForExit(330000)) { try { $pr.Kill() } catch {} }
     }
 }
 # Временная папка внутри папки лаунчера: %TEMP% бывает в коротком виде (C:\Users\9734~1), на нём Remove-Item падает.
@@ -1837,6 +2000,67 @@ function Show-Update {
     }
 }
 
+# Экран обновления Claude Code: версии, что нового, обновить / позже / пропустить.
+function Show-ClaudeUpdate {
+    $ccSel = 0
+    if ($Cc.State -ne 'available' -and $Cc.State -ne 'latest') {
+        Clear-Screen; [Console]::WriteLine("`n  $Clay$($G.Star)$R $Muted$(T 'cc_checking')$R")
+        Check-ClaudeNow
+    }
+    while ($true) {
+        $ccNotes = @()
+        if ($Cc.State -eq 'available') {
+            if ($null -eq $Cc.Notes -and -not $Cc.NotesError) { Clear-Screen; [Console]::WriteLine("`n  $Clay$($G.Star)$R $Muted$(T 'cc_notes_loading')$R") }
+            $ccNotes = @(Get-ClaudeNotes)
+        }
+        $ccHeader = {
+            param($W)
+            $lines = @('', (Brand $W), '', "   $Bold$Ivory$(T 'cc_title')$R")
+            switch ($Cc.State) {
+                'available' {
+                    $lines += "   $Green$($G.Upd) $(TF 'cc_avail' $Cc.Latest)$R"
+                    $lines += "   $Dim$(TF 'cc_from_to' $ClaudeVersion $G.To $Cc.Latest $Cc.Channel)$R"
+                    if ($ccNotes.Count) {
+                        $lines += ''; $lines += "   $Muted$Bold$(T 'upd_whatsnew')$R"
+                        $lines += @(Format-ClaudeNotes $ccNotes $W)
+                    } elseif ($Cc.NotesError) { $lines += "   $Dim$(FitEnd (TF 'cc_notes_failed' $Cc.NotesError) ($W - 12))$R" }
+                }
+                'latest' { $lines += "   $Green$($G.Ok) $(TF 'cc_latest' $ClaudeVersion)$R" }
+                'error'  { $lines += "   $Red$(FitEnd (TF 'upd_failed' $Cc.Error) ($W - 12))$R" }
+                default  { $lines += "   $Muted$(T 'cc_checking')$R" }
+            }
+            Box ($lines + '') $W
+        }
+        $ccSections = {
+            param($q)
+            $its = @()
+            if ($Cc.State -eq 'available') {
+                $its += MkItem -Label (T 'cc_install') -Sub (T 'cc_install_sub') -Icon $G.Upd -Data @{ Kind = 'install' }
+                $its += MkItem -Label (T 'cc_full') -Sub (T 'cc_full_sub') -Icon $G.Open -Data @{ Kind = 'full' }
+                $its += MkItem -Label (T 'upd_later') -Meta 'esc' -Icon $G.Back -Data @{ Kind = 'back' }
+                $its += MkItem -Label (T 'upd_skip') -Sub (T 'upd_skip_sub') -Icon $G.Exit -Data @{ Kind = 'skip' }
+            } else {
+                $its += MkItem -Label (T 'upd_check_again') -Icon $G.Cont -Data @{ Kind = 'check' }
+                $its += MkItem -Label (T 'cc_full') -Sub (T 'cc_full_sub') -Icon $G.Open -Data @{ Kind = 'full' }
+                $its += MkItem -Label (T 'back') -Meta 'esc' -Icon $G.Back -Data @{ Kind = 'back' }
+            }
+            @(MkSection '' $its)
+        }
+        $pick = Run-Screen -Header $ccHeader -Sections $ccSections -Keys @(@("$($G.Up)$($G.Down)", (T 'k_select')), @('enter', (T 'k_open')), @('esc', (T 'k_back'))) -Start $ccSel
+        if (-not $pick -or $pick.Item.Kind -eq 'back') { return }
+        $ccSel = $pick.Index
+        switch ($pick.Item.Kind) {
+            'install' { Install-ClaudeUpdate; $ccSel = 0 }
+            'full'    { Start-Process $CcChangelogUrl }
+            'skip'    { $Cfg.skipClaudeVersion = $Cc.Latest; Save-Settings; return }
+            'check'   {
+                Clear-Screen; [Console]::WriteLine("`n  $Clay$($G.Star)$R $Muted$(T 'cc_checking')$R")
+                Check-ClaudeNow; $ccSel = 0
+            }
+        }
+    }
+}
+
 # Каталог скиллов из репозитория.
 function Show-Skills {
     $skSel = 0; $skNotice = ''
@@ -1950,7 +2174,8 @@ function Show-Info {
             $lines += ''
             $lines += "   $Muted$Bold$(T 'inf_apps')$R"
             $cv = if ($ClaudeVersion) { "$Ivory" + "v$ClaudeVersion$R" } else { "$Dim$(T 'no')$R" }
-            if ($ClaudeExe) { $cv += "  $Dim$(FitStart (Format-Path $ClaudeExe) ($W - 50))$R" }
+            if (Claude-Pending) { $cv += "  $Green$($G.Upd) $(TF 'cc_meta_new' $Cc.Latest)$R" }
+            elseif ($ClaudeExe) { $cv += "  $Dim$(FitStart (Format-Path $ClaudeExe) ($W - 50))$R" }
             $lines += (& $lbl 'Claude Code' $cv)
             $chk = if ($Cfg.lastCheck) { try { TF 'inf_checked' (Format-Ago ([DateTimeOffset]::Parse([string]$Cfg.lastCheck, [Globalization.CultureInfo]::InvariantCulture).LocalDateTime)) } catch { '' } } else { T 'inf_never' }
             $lv = "$Ivory" + "v$AppVersion$R"
@@ -2031,7 +2256,8 @@ function Show-Settings([switch]$First) {
             $skillsSec = @((MkItem -Label (T 'skills') -Sub (T 'skills_sub') -Meta (TF 'skills_meta' $Cfg.skills.Count) -Icon $G.Skill -Data @{ Kind = 'skills' }))
             $hMeta = if ($HealthCount -gt 0) { TF 'health_meta' $HealthCount } else { T 'health_ok' }
             $tools = @((MkItem -Label (T 'health') -Sub (T 'health_sub') -Meta $hMeta -Icon $G.Ok -Data @{ Kind = 'health' }))
-            $tools += MkItem -Label (T 'update_claude') -Sub (T 'update_sub') -Icon $G.Cont -Data @{ Kind = 'update' }
+            $ccMeta = if (Claude-Pending) { TF 'cc_meta_new' $Cc.Latest } elseif ($Cc.State -eq 'latest') { TF 'cc_meta_latest' $ClaudeVersion } else { '' }
+            $tools += MkItem -Label (T 'update_claude') -Sub (T 'update_sub') -Meta $ccMeta -Icon $G.Cont -Data @{ Kind = 'update' }
             if ($installed) { $tools += MkItem -Label (T 'fit_window') -Sub (T 'fit_window_sub') -Icon $G.Home -Data @{ Kind = 'fit' } }
             if (@($Cfg.hidden).Count) { $tools += MkItem -Label (T 'unhide') -Meta (TF 'unhide_meta' @($Cfg.hidden).Count) -Icon $G.Back -Data @{ Kind = 'unhide' } }
             $tools += MkItem -Label (T 'open_dir') -Meta (Format-Path $AppDir) -Icon $G.Open -Data @{ Kind = 'opendir' }
@@ -2063,7 +2289,10 @@ function Show-Settings([switch]$First) {
         switch ($it.Kind) {
             'opt'     {
                 Step-Option $it.Key $(if ($pick.Action -eq 'left') { -1 } else { 1 })
-                if ($it.Key -eq 'autoUpdate' -and $Cfg.autoUpdate -and $Upd.State -eq 'idle') { Start-UpdateCheck }
+                if ($it.Key -eq 'autoUpdate' -and $Cfg.autoUpdate) {
+                    if ($Upd.State -eq 'idle') { Start-UpdateCheck }
+                    if ($Cc.State -eq 'idle') { Start-ClaudeCheck }
+                }
             }
             'done'    { return }
             'info'     { if ($pick.Action -eq 'enter') { Show-Info } }
@@ -2080,11 +2309,7 @@ function Show-Settings([switch]$First) {
                 Show-Update
             }
             'update'  {
-                if ($pick.Action -ne 'enter') { continue }
-                Clear-Screen; Input-Restore; [Console]::CursorVisible = $true
-                [Console]::WriteLine("`n  $Clay$($G.Star)$R $Ivory$(T 'update_claude')$R`n")
-                if ($ClaudeExe) { try { & $ClaudeExe update } catch { [Console]::WriteLine("  $Red$($_.Exception.Message)$R") } }
-                Find-Claude; Wait-AnyKey
+                if ($pick.Action -eq 'enter') { Show-ClaudeUpdate }
             }
             'fit'     { if ($pick.Action -eq 'enter') { try { Write-Shortcuts; $notice = T 'fit_done' } catch { $notice = $_.Exception.Message } } }
             'unhide'  { if ($pick.Action -eq 'enter') { $Cfg.hidden = @(); Save-Settings; $notice = T 'unhide_done' } }
@@ -2173,11 +2398,15 @@ function Open-Project([string]$projPath) {
 # Плашка в шапке главного экрана: «вышло обновление» или «лаунчер обновлён».
 $HomeNotice = ''
 function Home-Banner([int]$W) {
-    if (Update-Pending) {
-        $hb = "   $Green$Bold$($G.Upd) $(TF 'upd_home' $Upd.Manifest.version)$NoBold$R  $Dim$($G.Dot)  $(T 'upd_home_hint')$R"
-        return @('', $hb)
-    }
     $hbOut = @()
+    if (Update-Pending) {
+        $hbOut += @('', "   $Green$Bold$($G.Upd) $(TF 'upd_home' $Upd.Manifest.version)$NoBold$R  $Dim$($G.Dot)  $(T 'upd_home_hint')$R")
+    }
+    if (Claude-Pending) {
+        if (-not $hbOut.Count) { $hbOut += '' }
+        $hbOut += "   $Green$Bold$($G.Upd) $(TF 'cc_home' $Cc.Latest)$NoBold$R  $Dim$($G.Dot)  $(TF 'cc_home_hint' $ClaudeVersion)$R"
+    }
+    if ($hbOut.Count) { return $hbOut }
     if ($HomeNotice) { $hbOut += @('', "   $Green$($G.Ok) $(FitEnd $HomeNotice ($W - 14))$R") }
     if ($HealthCount -gt 0) {
         if (-not $hbOut.Count) { $hbOut += '' }
@@ -2205,6 +2434,7 @@ function Show-Home {
             # строки шапки: пустая + рамка + поиск (3): всё, что не список
             $boxLines = (@('', '', '') + $(if ($Cfg.greeting) { @('') } else { @() }) + @('') + @(Usage-Lines (Get-Width)) + @(Home-Banner (Get-Width)) + @('')).Count + 2
             if (Update-Pending) { $boxLines += 1 }
+            if (Claude-Pending) { $boxLines += 2 }
             if ($HealthCount -gt 0) { $boxLines += 1 }
             $fit = if ($Cfg.projects -eq 'auto') {
                 [math]::Max(3, [math]::Floor(([Console]::WindowHeight - 15 - $boxLines) / 2))
@@ -2223,6 +2453,9 @@ function Show-Home {
                     $hc = @($Upd.Manifest.changelog | Where-Object { $_ -and [string]$_.version -eq [string]$Upd.Manifest.version }) | Select-Object -First 1
                     if ($hc) { $hn = @($hc.([string]$Cfg.lang)); if (-not $hn[0]) { $hn = @($hc.ru) }; $hFirst = [string]$hn[0] }
                     $other += MkItem -Label (TF 'upd_item' $Upd.Manifest.version) -Sub $hFirst -Meta (T 'upd_item_meta') -Icon $G.Upd -Data @{ Kind = 'update' }
+                }
+                if (Claude-Pending) {
+                    $other += MkItem -Label (TF 'cc_item' $Cc.Latest) -Sub (TF 'cc_item_sub' $ClaudeVersion) -Meta (T 'upd_item_meta') -Icon $G.Upd -Data @{ Kind = 'ccupdate' }
                 }
                 if ($HealthCount -gt 0) {
                     $other += MkItem -Label (T 'health') -Sub (T 'health_sub') -Meta (TF 'health_meta' $HealthCount) -Icon $G.Err -Data @{ Kind = 'health' }
@@ -2253,6 +2486,7 @@ function Show-Home {
             'browse'   { $t = Select-FolderDialog $desktop; if ($t) { Open-Project $t } }
             'settings' { Show-Settings }
             'update'   { Show-Update }
+            'ccupdate' { Show-ClaudeUpdate }
             'health'   { Show-Health }
             'exit'     { return }
         }
@@ -2272,7 +2506,7 @@ if ($Updated) {
     if ((Test-Path -LiteralPath $AppScript) -and (Get-Command wt.exe -ErrorAction SilentlyContinue)) { try { Write-Fragment } catch {} }
 }
 Init-Native
-if ($Cfg.autoUpdate) { Start-UpdateCheck }
+if ($Cfg.autoUpdate) { Start-UpdateCheck; Start-ClaudeCheck }
 try {
     if (-not $ClaudeExe) { if (-not (Show-Missing)) { return } }
     if (-not $Cfg.firstRunDone) { Show-Settings -First; $Cfg.firstRunDone = $true; Save-Settings }

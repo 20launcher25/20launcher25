@@ -1,5 +1,19 @@
 [
   {
+    "version": "2.1.0",
+    "date": "2026-11-23",
+    "ru": [
+      "Уведомление о новой версии Claude Code: плашка на главном экране, список изменений и обновление одной кнопкой",
+      "Каталог из 17 скиллов: «Настройки → Установить скиллы»",
+      "Скиллы и обновления скачиваются в несколько раз быстрее"
+    ],
+    "en": [
+      "New Claude Code version notice: a banner on the home screen, the list of changes and a one-click update",
+      "A catalog of 17 skills: Settings → Install skills",
+      "Skills and updates download several times faster"
+    ]
+  },
+  {
     "version": "2.0.0",
     "date": "2026-11-23",
     "ru": [

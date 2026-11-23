@@ -38,6 +38,8 @@ function Skill-Description([string]$file) {
                 }
                 return (($parts | Where-Object { $_ }) -join ' ')
             }
+            # обычное значение может продолжаться на следующих строках с отступом
+            for ($j = $i + 1; $j -lt $lines.Count -and $lines[$j] -match '^\s+\S'; $j++) { $v += ' ' + $lines[$j].Trim() }
             if ($v.Length -ge 2 -and (($v[0] -eq '"' -and $v[-1] -eq '"') -or ($v[0] -eq "'" -and $v[-1] -eq "'"))) {
                 $v = $v.Substring(1, $v.Length - 2)
                 $v = $v -replace '\\"', '"' -replace "''", "'"
