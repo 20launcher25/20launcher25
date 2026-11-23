@@ -15,7 +15,8 @@
                                      "Если лаунчер падает, на экране остаётся текст ошибки, а не пустое закрытое окно",
                                      "Политика использования: «Настройки → Политика использования»",
                                      "Загрузка с GitHub через встроенный curl.exe: не зависает, если у провайдера не работает IPv6",
-                                     "Экран «Сведения»: строка обновлений больше не вылезает за рамку"
+                                     "Экран «Сведения»: строка обновлений больше не вылезает за рамку",
+                                     "Каталог скиллов: 17 скиллов, скачиваются в несколько раз быстрее"
                                  ],
                           "en":  [
                                      "GitHub updates: the launcher checks for a new version, shows what\u0027s new and installs it in one click",
@@ -26,15 +27,16 @@
                                      "If the launcher crashes, the error stays on screen instead of the window just closing",
                                      "Usage policy: Settings → Usage policy",
                                      "Downloads from GitHub go through the built-in curl.exe and no longer hang when IPv6 is broken",
-                                     "Info screen: the updates line no longer overflows the frame"
+                                     "Info screen: the updates line no longer overflows the frame",
+                                     "Skill catalog: 17 skills, downloads are several times faster"
                                  ]
                       }
                   ],
     "files":  [
                   {
                       "path":  "launcher.ps1",
-                      "sha256":  "4c79be5449449b2dbe9f74220e3f66250ad332b9c82292f8ce153f607a055e95",
-                      "size":  146005
+                      "sha256":  "f4584e8f1af4b9b3efa1b92b5908dbdff4c28c19af0c95dc0e4f83aa4f97df16",
+                      "size":  148464
                   },
                   {
                       "path":  "Install.cmd",
@@ -113,6 +115,1009 @@
                   }
               ],
     "skills":  [
-
+                   {
+                       "name":  "adaptive",
+                       "description":  "Instructions to make or update an app\u0027s UI so that it adapts to different Android devices including phones, tablets, foldables, laptops, desktop, TV, Auto, and XR. It includes how to handle different window sizes, pointing devices (such as mouse) and text entry devices (such as keyboard) using the Compose MediaQuery API, and how to preserve UI, navigation, scroll, and media playback state across configuration changes (such as folding/unfolding a foldable, rotating a device, or resizing a window). It also covers multi-pane layouts using Navigation3 Scenes, adaptive UI components (such as buttons) with varying target sizes, and adaptive layouts (including navigation areas - nav rails and nav bars) using the Compose Grid and FlexBox APIs. It also covers desktop experiences with keyboard shortcuts, tooltips and custom cursors.",
+                       "rev":  "46edc47f0e0b",
+                       "files":  [
+                                     {
+                                         "path":  "skills/adaptive/LICENSE.txt",
+                                         "sha256":  "49bbe9114e49214df2ccc324cb3ac8d1d1aa1c3a0947f94c286765e86647b32e",
+                                         "size":  11558
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/develop/ui/compose/layouts/adaptive/flexbox/container-behavior.md",
+                                         "sha256":  "fa9b7c9ef50edaddeb750ac3e03c5d7f4bace76e8dc2a9049d1c85674d579e8e",
+                                         "size":  9460
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/develop/ui/compose/layouts/adaptive/flexbox/get-started.md",
+                                         "sha256":  "c8fff0eb6ff0e9fc6bd78d96575076caa0d8e3ed74491cddba2259ced9af6b36",
+                                         "size":  2405
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/develop/ui/compose/layouts/adaptive/flexbox/index.md",
+                                         "sha256":  "d3465e7fab55b5bd603dd856b3195803ad27e018c67718d01fcdbf8e7a7b048b",
+                                         "size":  6064
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/develop/ui/compose/layouts/adaptive/flexbox/item-behavior.md",
+                                         "sha256":  "375549405db6645c53373e7e0b9e2e4188fb2d1fb0e1561ac409b5566dc46cc2",
+                                         "size":  8673
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/develop/ui/compose/layouts/adaptive/grid/container-properties.md",
+                                         "sha256":  "2e8cbc08e2baafcb85f6fffe83e5f204dd61e5fd08bce89bdac550f969f0e914",
+                                         "size":  16633
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/develop/ui/compose/layouts/adaptive/grid/get-started.md",
+                                         "sha256":  "9ee17554ac7cafd9b665d4db5cd9b0da0af722cc77263723b6c3ba01a5b0939e",
+                                         "size":  1899
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/develop/ui/compose/layouts/adaptive/grid/index.md",
+                                         "sha256":  "3c388fafffeed4e460743820dede03dc1077722d8826964314c06e57d9a07ba0",
+                                         "size":  4322
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/develop/ui/compose/layouts/adaptive/grid/item-properties.md",
+                                         "sha256":  "c1976dd8b80d383ca4dff856146a095dcd81da6d3fcd7076c27f7fb4b4c71eb8",
+                                         "size":  5925
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/develop/ui/compose/layouts/adaptive/mediaquery/index.md",
+                                         "sha256":  "31779f140ed771e8c6147e80ace22712e00488ad86495af064b3dd6c1711abf7",
+                                         "size":  14493
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/guide/navigation/navigation-3/recipes/material-listdetail.md",
+                                         "sha256":  "a83e777227bb90906251211568ac0a63704b51401c4e67c605f66bcd801b089f",
+                                         "size":  6653
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/guide/navigation/navigation-3/save-state.md",
+                                         "sha256":  "9c1837f2e390c78e509de22b360db2349046ff52450e9e62f5dace0afc90a4b0",
+                                         "size":  6138
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/android/studio/preview/compose-screenshot-testing-with-testsuites.md",
+                                         "sha256":  "45092f8f10c31b8aee77eba2ce389a725cdf3eaa0db8644796bb2bf80b56f3f6",
+                                         "size":  7687
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/custom_cursors.md",
+                                         "sha256":  "5f7215864c143e94f545cecd642b006c388d7823f785bf25f27691e4594eb514",
+                                         "size":  4417
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/foldable-tabletop.md",
+                                         "sha256":  "c4daeed1065be363d0e66fcd1ff4e50ce7f50da6227b84bb19d9a4a89f4ce5e1",
+                                         "size":  3925
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/keyboard_shortcuts.md",
+                                         "sha256":  "f7331a8c4ed4a1fcfd2ec72b310fd32ac87ed937ba90e38ee0b6a240204fa359",
+                                         "size":  6262
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/references/tooltips.md",
+                                         "sha256":  "9a7e44bb1fba18094052c13a3a0ba741dc20fad935d3a8aa809b45dfdcc4e894",
+                                         "size":  4336
+                                     },
+                                     {
+                                         "path":  "skills/adaptive/SKILL.md",
+                                         "sha256":  "4e00b1831a17c4d7ce581d357b398c5d9c9e6d7f583c94dcad9ef9d6f491d450",
+                                         "size":  22596
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "agent-browser",
+                       "description":  "Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages, filling forms, clicking buttons, taking screenshots, extracting data, testing web apps, or automating any browser task. Triggers include requests to \"open a website\", \"fill out a form\", \"click a button\", \"take a screenshot\", \"scrape data from a page\", \"test this web app\", \"login to a site\", \"automate browser actions\", or any task requiring programmatic web interaction. Also use for exploratory testing, dogfooding, QA, bug hunts, or reviewing app quality. Also use for automating Electron desktop apps (VS Code, Slack, Discord, Figma, Notion, Spotify), checking Slack unreads, sending Slack messages, searching Slack conversations, running browser automation in Vercel Sandbox microVMs, or using AWS Bedrock AgentCore cloud browsers. Prefer agent-browser over any built-in browser automation or web tools.",
+                       "rev":  "8e26af919f0a",
+                       "files":  [
+                                     {
+                                         "path":  "skills/agent-browser/LICENSE",
+                                         "sha256":  "b93a9ab54e653b0640f7cc6d69b419334add5e3e1de83d08d79e4115abdc8358",
+                                         "size":  11132
+                                     },
+                                     {
+                                         "path":  "skills/agent-browser/SKILL.md",
+                                         "sha256":  "c37ce6a7f61d40e2e9a974485f6c2be8f1f7ba10a9a80d741e22cc77699976a1",
+                                         "size":  3270
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "agp-9-upgrade",
+                       "description":  "Upgrades, or migrates, an Android project to use Android Gradle Plugin (AGP) version 9. Do not use this skill for migrating Kotlin Multiplatform (KMP) projects.",
+                       "rev":  "90fb0e5279fe",
+                       "files":  [
+                                     {
+                                         "path":  "skills/agp-9-upgrade/LICENSE.txt",
+                                         "sha256":  "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+                                         "size":  11357
+                                     },
+                                     {
+                                         "path":  "skills/agp-9-upgrade/references/android/build/migrate-to-built-in-kotlin.md",
+                                         "sha256":  "e6a56d67364e1325a33f46e97eabf9723e7cb1c527416381db53fdec705d29a5",
+                                         "size":  13842
+                                     },
+                                     {
+                                         "path":  "skills/agp-9-upgrade/references/android/build/releases/agp-9-0-0-release-notes.md",
+                                         "sha256":  "d65638de2efd3d16b57469dc7939769690bc628d39f1a75351764c1995cfd122",
+                                         "size":  53080
+                                     },
+                                     {
+                                         "path":  "skills/agp-9-upgrade/references/buildconfig.md",
+                                         "sha256":  "ee75e2f2d5e57ee81bc1e808e4928077fb02c1f72c1204eb3a28efb027771eff",
+                                         "size":  1553
+                                     },
+                                     {
+                                         "path":  "skills/agp-9-upgrade/references/ksp-kapt.md",
+                                         "sha256":  "98ca602afb5cf54f5aeb5b81e8443bacc8c7fc2278e2c398d54103681f330b1a",
+                                         "size":  1828
+                                     },
+                                     {
+                                         "path":  "skills/agp-9-upgrade/references/paparazzi-gradle-9.md",
+                                         "sha256":  "d158a5c0b3a019cebff4402b706277348299fcd6798ae1974c6dfe035f53476a",
+                                         "size":  1193
+                                     },
+                                     {
+                                         "path":  "skills/agp-9-upgrade/references/recipes.md",
+                                         "sha256":  "01e05eb0e584a34646687af448b6684d814ba3c9e77ddc049083648d81b17d54",
+                                         "size":  2333
+                                     },
+                                     {
+                                         "path":  "skills/agp-9-upgrade/SKILL.md",
+                                         "sha256":  "57942fb69ce59f4feeccac3072c8d46bb612a7fff15aabb0074995927082642f",
+                                         "size":  3632
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "compose-expert",
+                       "description":  "Compose and Compose Multiplatform expert for UI development across Android, Desktop, iOS, and Web. Use whenever the user mentions Compose APIs (@Composable, remember, LaunchedEffect, NavHost, MaterialTheme, LazyColumn, Modifier, recomposition), Compose Multiplatform (commonMain, expect/actual, Res.*, ComposeUIViewController, UIKitView, ComposeViewport), Android TV (tv-material, D-pad, focus, Carousel), Material 3 motion, atomic design systems, design-to-code workflows, Paging 3, or navigation. Activates Review Mode on GitHub PR URLs and review phrases (\"review this PR\", \"what\u0027s wrong with this\"). Auto-detects Compose projects on session_start. Backed by actual androidx/androidx and JetBrains/compose-multiplatform-core source receipts. See \"## When this skill applies\" in SKILL.md for the full trigger surface.",
+                       "rev":  "91bc5e2f9c3c",
+                       "files":  [
+                                     {
+                                         "path":  "skills/compose-expert/LICENSE",
+                                         "sha256":  "eae9561e6dd638626747f2fb2668688083d93cb30bfa135ae815b70270264f9a",
+                                         "size":  1320
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/accessibility.md",
+                                         "sha256":  "3713580a19c773a894daa2926df68e03cde784197131de6340cdcdf06b71818f",
+                                         "size":  11976
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/animation.md",
+                                         "sha256":  "38552c21d0d4ec923825a9e65ff26b5972f6760e076bf56e21879ddacaedd75e",
+                                         "size":  43958
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/atomic-design.md",
+                                         "sha256":  "4af10d09cae1b462cd66e67f15d553fbb8cef409ec4c2c7abc9ba4b22be66ad7",
+                                         "size":  11313
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/auto-init.md",
+                                         "sha256":  "cc6188e802f981b646d3e051c51ce49ed253997647bdb13ec6f371043d6389a8",
+                                         "size":  1679
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/composition-locals.md",
+                                         "sha256":  "1e9328079b09c2a9a3ed4a288c8dbcbc41578262d48b3ed339c70e58dc2850b1",
+                                         "size":  7289
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/deprecated-patterns.md",
+                                         "sha256":  "43553d5e9b946b5a4789996ca15741ee07f2608f3b95e74f20e8015990efb3fb",
+                                         "size":  8764
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/design-to-compose.md",
+                                         "sha256":  "a53b02f014bf72fe7f008668f64aead96dc9509934ec4d4f98b7fa90dd875cd9",
+                                         "size":  24837
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/lists-scrolling.md",
+                                         "sha256":  "10f534dc196a79602744f382f9e1421dc3bc34b6edea5bf3d901f9e1a2fb2601",
+                                         "size":  14806
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/material3-motion.md",
+                                         "sha256":  "8264729abe01ee78e0b1816fc21e599ea18de806fed4fa478c24bb670bfe9d49",
+                                         "size":  15285
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/modifiers.md",
+                                         "sha256":  "0431fae1ab6a05ba21d563176c991b16a03ed12b963212a9d7a7efa7c7ca4ff4",
+                                         "size":  14270
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/multiplatform.md",
+                                         "sha256":  "620c61e48414a6d9b9b1eec726ab73401f3ab72ddca7a446f3e753c110992424",
+                                         "size":  21644
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/navigation.md",
+                                         "sha256":  "3591c43a54c222126537e11f59453c3b8814f083d5bf38617d215ac9b15258ba",
+                                         "size":  11715
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/navigation-migration.md",
+                                         "sha256":  "209dbe67d996a4e4fdce66f9bc7c6c35b45d99dcaadd874048895a3338868502",
+                                         "size":  13259
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/paging.md",
+                                         "sha256":  "44ad5a1d9788758ce371039950728981613d6016da370dca6d7c0834da86f031",
+                                         "size":  11651
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/paging-mvi-testing.md",
+                                         "sha256":  "866c20242313efbb57464266debad74366c617a5a2f89e96b19225cdae83afee",
+                                         "size":  6722
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/paging-offline.md",
+                                         "sha256":  "26355516033d6277bb8809249013aca3f2d2fe919c9c2cc2257b6397edcdbf97",
+                                         "size":  6697
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/performance.md",
+                                         "sha256":  "7d3e3462a60d776184fab7949d9042a548fac3ba38963cb55414aa568d39ebbe",
+                                         "size":  16788
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/platform-specifics.md",
+                                         "sha256":  "5e71fb690febfe143a973807158dc5bd91d11728ae30042013c7472d95e01786",
+                                         "size":  18845
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/production-crash-playbook.md",
+                                         "sha256":  "fcc68623ee21a8d6ddea517e8933da2fea99d7a4862eccc3ab5ffb1c1df72269",
+                                         "size":  26944
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/pr-review.md",
+                                         "sha256":  "f813c73360534205b631bd8a8f947fb517e55112a964e9f3e89df5db3c350e3e",
+                                         "size":  14081
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/side-effects.md",
+                                         "sha256":  "fc1da6c86ad0eeacfe46e722e00ee4d1817ca872ecba99197d51d9b28660c844",
+                                         "size":  13715
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/source-code/cmp-source.md",
+                                         "sha256":  "6c5484a9135c03acebd57a470fecbdd9ce1197366a2acc626fc83028957e6618",
+                                         "size":  18849
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/source-code/foundation-source.md",
+                                         "sha256":  "e9acacee7bec72a8e4850860da0964be7e7f76b86771b7d217bc563b9f1c080d",
+                                         "size":  587675
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/source-code/material3-source.md",
+                                         "sha256":  "31960e84d54e2594b115bf0794d38aca9d0ae0097bf4d69f987c01eb4cca71a4",
+                                         "size":  875276
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/source-code/navigation-source.md",
+                                         "sha256":  "0977004fa1efc6191a214950eb4b23fe603029eb949c26e69f1defae93282078",
+                                         "size":  124643
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/source-code/runtime-source.md",
+                                         "sha256":  "7e392da7309b7485adf8a6eb1c6f4ba33c1c47ae3c3af16ceb3819abfa92cb77",
+                                         "size":  471090
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/source-code/ui-source.md",
+                                         "sha256":  "8637931ad50e615c9a473ad6b9fc7ea55560711b40a3c61ba7c6024e289e5eb9",
+                                         "size":  328508
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/state-management.md",
+                                         "sha256":  "e14fe060c5b2abf19f19c4ce7b1d3a322ef825c6e4b3283d1ed4a1629bf0108a",
+                                         "size":  17529
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/styles-experimental.md",
+                                         "sha256":  "ac7ddfd6fc1554dadfbc167fd03e3f034f7577ce7fcef158d259c439d4ed94a3",
+                                         "size":  15297
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/theming-material3.md",
+                                         "sha256":  "a35750ba8e9d5b4fbda5ad7c49fde5aecccf4bb3468857a27a3830d25fb933a6",
+                                         "size":  13825
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/tv-compose.md",
+                                         "sha256":  "35a29cf310dad6703172e5f36bf7aaa94418d099362e5757192a66aaa4b455a7",
+                                         "size":  31901
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/references/view-composition.md",
+                                         "sha256":  "0487b52ad36eb13792137a3877dcc2f58c96faa659dab7ca1a68ef48246daef2",
+                                         "size":  21116
+                                     },
+                                     {
+                                         "path":  "skills/compose-expert/SKILL.md",
+                                         "sha256":  "9d046e65a27a3671f11d69c1456e518ff97b7161007b3939dbb53bbe4a6b1b96",
+                                         "size":  19891
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "configuring-r8-for-compose",
+                       "description":  "Use this skill to configure R8 correctly for a Jetpack Compose application — full mode by default, `proguard-android-optimize.txt`, resource shrinking on, and minimal keep rules because Compose ships consumer ProGuard rules. Covers AGP 8.0+ R8 full mode default, R8\u0027s Compose-aware optimizations (lambda grouping, `sourceInformation()` stripping, composable arg constant-folding, `ComposerImpl` devirtualization), legitimate keep needs (`@Serializable`, Hilt entry points, reflective `Saver`s), and the AGP 8.x missing-rule reporter / R8 retrace. Cited gain is roughly 75 percent startup and 60 percent frame-render improvement debug-to-release. Use when setting up a new Compose app, when a PR adds an over-broad keep like `-keep class androidx.compose.** { *; }`, when a release build crashes after enabling minification, when APK size needs reduction, or when first enabling minification.",
+                       "rev":  "e5ce5a35fdfd",
+                       "files":  [
+                                     {
+                                         "path":  "skills/configuring-r8-for-compose/LICENSE",
+                                         "sha256":  "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+                                         "size":  11357
+                                     },
+                                     {
+                                         "path":  "skills/configuring-r8-for-compose/SKILL.md",
+                                         "sha256":  "0d81f91e6edf078b01e3f5dc82fa0c9b6d9acf2ea7fa603dddbbe52ccd5a1e6e",
+                                         "size":  15359
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "figma-designer",
+                       "description":  "Design inside Figma the way this designer does: real variables, text styles, auto layout and components, on a fixed visual system (Tailwind type and radius scale, spacing tokens, two-layer color tokens, button and state rules). Use this skill whenever you create, edit or review anything in a Figma file through the Figma MCP: screens, landing pages, components, mockups, design systems, tokens, or any UI. Use it even when the user doesn\u0027t name the skill and only says things like \u0027design a page in Figma\u0027, \u0027make a button component\u0027, \u0027mock this up\u0027 or shares a figma.com link. Load it before writing any use_figma code.",
+                       "rev":  "496ccd2d2d8d",
+                       "files":  [
+                                     {
+                                         "path":  "skills/figma-designer/SKILL.md",
+                                         "sha256":  "08d77435965e07a30fea2363bdd5efda7838ec5468b641944e96436de4be5a0a",
+                                         "size":  22484
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "frontend-design",
+                       "description":  "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don\u0027t read as templated defaults.",
+                       "rev":  "74ddce3eaf1e",
+                       "files":  [
+                                     {
+                                         "path":  "skills/frontend-design/LICENSE.txt",
+                                         "sha256":  "eb3d7b5485466acbd81f2b496f595ab637d2792e268206b27d99e793bdb67549",
+                                         "size":  10351
+                                     },
+                                     {
+                                         "path":  "skills/frontend-design/SKILL.md",
+                                         "sha256":  "b8009ae690dfa69edc7f08bb8715f32db8817112cfa4388741dbaf876c237df8",
+                                         "size":  9461
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "humanize",
+                       "description":  "Очеловечивание текста: убрать следы ИИ и сделать текст живым. Триггеры: очеловечить текст, убрать признаки ИИ, звучит как нейросеть, сделать по-человечески, переписать живым языком, убрать длинные тире, убрать канцелярит и воду, убрать водяной знак / вотермарку из текста, обойти детектор ИИ, remove watermark, watermark remover, humanize text, remove AI tells, make it sound human, de-AI. Работает с русским и английским: посты, статьи, письма, описания, документация, README, рекламные тексты. Применять, когда текст просят переписать, вычитать на естественность или когда написанное выглядит шаблонным.",
+                       "rev":  "e4495d56723d",
+                       "files":  [
+                                     {
+                                         "path":  "skills/humanize/SKILL.md",
+                                         "sha256":  "a597ae3faf8410ec0489b74dbc4dfd23a198cf7c49288a98b15e816b9fbf6d91",
+                                         "size":  17055
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "humanize-kk",
+                       "description":  "Қазақ тіліндегі мәтінді адамша жазу және ЖИ іздерін (AI slop) кетіру, әсіресе тәжірибе есебі (практика есебі), курстық, реферат сияқты оқу жұмыстары үшін. Триггеры: очеловечить казахский текст, мәтінді адамша қыл, ЖИ жазғандай естіледі, отчёт по практике на казахском, тәжірибе есебін жаз/түзет, убрать ИИ из текста на казахском, humanize Kazakh text. Формальный регистр, но живой: конкретные факты вместо штампов. Включает официальное правило Anthropic про mannered prose.",
+                       "rev":  "b4e20e095d77",
+                       "files":  [
+                                     {
+                                         "path":  "skills/humanize-kk/SKILL.md",
+                                         "sha256":  "afd0df7f07b9f2bc9dd667129c885e3a06cfcbb447a90d388040713002f27c59",
+                                         "size":  18980
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "jetpack-compose-performance",
+                       "description":  "Diagnose and optimize Android Jetpack Compose UI code. Use this skill when analyzing performance bottlenecks of existing code to minimize recomposition overhead and prevent dropped frames and UI lag.",
+                       "rev":  "0ae4482fec5c",
+                       "files":  [
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/LICENSE.txt",
+                                         "sha256":  "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+                                         "size":  11357
+                                     },
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/references/android/develop/ui/compose/custom-modifiers.md",
+                                         "sha256":  "0760d7cbce4651dca75c1ddf1d7d689d0e1339777623b1cd26bdd55d8fed6d28",
+                                         "size":  27852
+                                     },
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/references/android/develop/ui/compose/performance/backwards-write.md",
+                                         "sha256":  "5e5fbe4c2da6dcca53b5166a71233dd5a5a7242a3057f20a2fba03e119dcbe2f",
+                                         "size":  12437
+                                     },
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/references/android/develop/ui/compose/performance/stability/strongskipping.md",
+                                         "sha256":  "a0ed53e1cabb6ab194354c6cba334ca9a3752822bb36a9b5caca2ab0c1024efb",
+                                         "size":  6882
+                                     },
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/references/animation.md",
+                                         "sha256":  "5974693bded244b7c3185d55f4bd15e2422d63aecb1396e382ce10fec7c46cf3",
+                                         "size":  8458
+                                     },
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/references/effects-and-threading.md",
+                                         "sha256":  "db295a92167049fdba0789625efcc934ace8cc4ba05befb5ac798e85a0555120",
+                                         "size":  18245
+                                     },
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/references/graphics-performance.md",
+                                         "sha256":  "7baf9491ef071d1ae4aad23985fdab3af35028b3b4a2a336ec1bf050a0d1d71c",
+                                         "size":  9863
+                                     },
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/references/layouts.md",
+                                         "sha256":  "a0254f9a615fe4e1d58126addcffad8995cac6594079926034543f6c69e2a1da",
+                                         "size":  9218
+                                     },
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/references/lazy-layouts.md",
+                                         "sha256":  "f3a35e5ae5c4a510e23ca2a7792e4b47253a14cbe9d75361a6047c3beb0544ea",
+                                         "size":  13206
+                                     },
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/references/state-and-stability.md",
+                                         "sha256":  "8c377ddd78faa5ed9e2e046d5ee3a3132b372f16d75250b33620c71004e4142d",
+                                         "size":  28848
+                                     },
+                                     {
+                                         "path":  "skills/jetpack-compose-performance/SKILL.md",
+                                         "sha256":  "3d2bd1c394c62123a9368afe824e5418a8e1e3ed1b387d6f0b6aaf683592248c",
+                                         "size":  21150
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "landing-page-design",
+                       "description":  "Complete system for building high converting landing pages: intake questions, page structure, layout selection, conversion copywriting, SEO, plus strict visual rules for typography, spacing, corner radius, backgrounds, hero layout, icons, and motion. Use this skill whenever building, editing, styling, reviewing, or writing copy for ANY landing page, marketing site, web UI, page section, component, or prototype, even when the user does not mention design, conversion, tokens, or a design system. Always consult it before choosing page sections, headlines, CTAs, fonts, font sizes, spacing values, border radii, background colors, icons, or transitions.",
+                       "rev":  "9021aeaf50c1",
+                       "files":  [
+                                     {
+                                         "path":  "skills/landing-page-design/SKILL.md",
+                                         "sha256":  "0bdac6240c51dd8117a8c378c4ab397aaa294ad2b0e346fefc9e03de98de869f",
+                                         "size":  22594
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "pitch-deck-advisor",
+                       "description":  "Build, review, and improve investor pitch decks for startups, with deep specialization in high-tech / deep-tech projects. Use this skill whenever the user wants to create a pitch deck, investor presentation, or fundraising materials; asks to review, critique, or \"red-flag check\" an existing deck; needs help writing or restructuring individual slides (problem, market, traction, team, ask); or asks how to pitch VCs, angels, or accelerators — even if they never say the words \"pitch deck\" (e.g. \"help me raise a seed round\", \"prepare for demo day\", \"investor one-pager\", \"презентация для инвесторов\", \"питч-дек\", \"инвестдек\", \"собрать дек для раунда\", \"проверь мой дек\", \"дек для акселератора\"). Based on Y Combinator, Sequoia Capital, a16z guidance and DocSend research on 200,000+ investor interactions.",
+                       "rev":  "c1ce061ae9bd",
+                       "files":  [
+                                     {
+                                         "path":  "skills/pitch-deck-advisor/references/deep-tech.md",
+                                         "sha256":  "9c762212bdfd36adc1a541d6c7395f6f75446225229fd92176773e0c6c4a7627",
+                                         "size":  4253
+                                     },
+                                     {
+                                         "path":  "skills/pitch-deck-advisor/references/review-checklist.md",
+                                         "sha256":  "dad7583b273ba482f75f780c53516d209f5acf2665b218e102912d4e03e9dde4",
+                                         "size":  5829
+                                     },
+                                     {
+                                         "path":  "skills/pitch-deck-advisor/references/slide-guide.md",
+                                         "sha256":  "2658dc6beaf6b90197334793c0c8780bd1ddd4634ac3e109a856a1dbc18c84dd",
+                                         "size":  8742
+                                     },
+                                     {
+                                         "path":  "skills/pitch-deck-advisor/SKILL.md",
+                                         "sha256":  "9c0896d49d2e011533ec80cef1d47bb24096ebef2c7370bf8e0e0f115bdd5402",
+                                         "size":  12454
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "skill-inspector",
+                       "description":  "Review AI agent skills before installation using NVIDIA SkillSpector and source-aware semantic review. Use when asked whether a skill or downloaded skill folder is safe, trustworthy, installable, over-permissioned, or malicious.",
+                       "rev":  "9059c47a056e",
+                       "files":  [
+                                     {
+                                         "path":  "skills/skill-inspector/SKILL.md",
+                                         "sha256":  "89ab1550769752ffbad782ee63fee3c345d546bded672adaac5fd03d2941aa84",
+                                         "size":  7213
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "supabase",
+                       "description":  "Use when doing ANY task involving Supabase. Triggers: Supabase products (Database, Auth, Edge Functions, Realtime, Storage, Vectors, Cron, Queues); client libraries and SSR integrations (supabase-js, @supabase/ssr) in Next.js, React, SvelteKit, Astro, Remix; auth issues (login, logout, sessions, JWT, cookies, getSession, getUser, getClaims, RLS); Supabase CLI or MCP server; schema changes, migrations, declarative schemas, security audits, Postgres extensions (pg_graphql, pg_cron, pg_vector); debugging and troubleshooting errors or unexpected behavior on Supabase projects (HTTP errors, Postgres errors, RLS surprises, permission denied, schema cache issues, timeouts, Edge Function crashes, Realtime drops, Storage failures) and reading or querying logs (Logs Explorer, ClickHouse).",
+                       "rev":  "87d38848ead8",
+                       "files":  [
+                                     {
+                                         "path":  "skills/supabase/assets/feedback-issue-template.md",
+                                         "sha256":  "74b5dfa3a8f7d6584af059a12bae4cd6bb66d1f3205dc306bf31d4f4ae2a13b1",
+                                         "size":  476
+                                     },
+                                     {
+                                         "path":  "skills/supabase/CHANGELOG.md",
+                                         "sha256":  "653a274669ff4d84eb3004ad379050cb73dbf75740df82ccb9768f29f0422190",
+                                         "size":  8442
+                                     },
+                                     {
+                                         "path":  "skills/supabase/LICENSE",
+                                         "sha256":  "d5f32eb9349125b311fd66f435a13eff089a7166b1e78e31b12e361edfb2466a",
+                                         "size":  1086
+                                     },
+                                     {
+                                         "path":  "skills/supabase/references/skill-feedback.md",
+                                         "sha256":  "85e688b56623f9250d23b60ea950dee740fd537980fc72178fe185eab76742b7",
+                                         "size":  1052
+                                     },
+                                     {
+                                         "path":  "skills/supabase/SKILL.md",
+                                         "sha256":  "44f4cfefb57751abf9288fb2920de621c748964de1301db627dea725e187bccf",
+                                         "size":  14462
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "supabase-postgres-best-practices",
+                       "description":  "Postgres best practices maintained by Supabase, for Postgres running anywhere. Load this skill BEFORE writing or changing anything that lives in a Postgres database: creating or altering tables and columns (including choosing column types), schema design, migrations and declarative schema files, RLS policies and the tests that verify them, indexes, triggers, database functions, queues and scheduled jobs (pg_cron, pgmq), vector/semantic search (pgvector), and restoring dumps (pg_restore) or importing data. Also load it when diagnosing slow queries, high CPU, timeouts, EXPLAIN plans, connection exhaustion, locking, bloat, or rows visible to the wrong user or tenant. This is not just a performance guide — schema, migration, security, and SQL authoring tasks need these rules too, even for a one-column change or a single query.",
+                       "rev":  "9f5d9c8584b0",
+                       "files":  [
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/CHANGELOG.md",
+                                         "sha256":  "849d982843672c2c7796cf3488b20c29538cdd304c1d64a60aec2500138059e9",
+                                         "size":  5757
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/LICENSE",
+                                         "sha256":  "b65e575eb4f04a13c187d64e958321298e2ab84d67aa8428819f362056ba292c",
+                                         "size":  1065
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/_contributing.md",
+                                         "sha256":  "b851de03355ea919862b637fdc14fefab648149cf1013b0194a17108b2d8af4c",
+                                         "size":  4283
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/_sections.md",
+                                         "sha256":  "ad2d6f6b0938ff844f7f8971153ab6d08a03ef6511b02fb9cee9336c7b209e93",
+                                         "size":  1721
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/_template.md",
+                                         "sha256":  "39e9fce3c6ae1af110f689e018d4417f3547ed0417a7b6198b207285e60bf9b8",
+                                         "size":  1074
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/advanced-full-text-search.md",
+                                         "sha256":  "0682b713263c5b6b9638a31f810bad07aa179bc4f79bbb787b92ed287e00fe76",
+                                         "size":  1523
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/advanced-jsonb-indexing.md",
+                                         "sha256":  "9bcbf7da33f6fe6fa9525680ca26d4e3412b534104cffb5f8529596d76631e4f",
+                                         "size":  1493
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/conn-idle-timeout.md",
+                                         "sha256":  "cd4386d0b5a2bd6d0148975f0f379016b47c7cf139b9483c4f24619c6a89f5e3",
+                                         "size":  1328
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/conn-limits.md",
+                                         "sha256":  "9ed6e5e3a45458a52f2863a60324a05d80da1d9f3e23bcb83b06f464f6a3cee7",
+                                         "size":  1369
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/conn-pooling.md",
+                                         "sha256":  "60cd5f7942c44bdf6d8622a49a2e9f0f7fd01daf8e62bd1bd66b195cd6942975",
+                                         "size":  1423
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/conn-prepared-statements.md",
+                                         "sha256":  "5ce48ff1e426c9b90c75c5733817fc2dd8feea9e4db3298ec9373b9cd0cf3bf8",
+                                         "size":  1575
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/data-batch-inserts.md",
+                                         "sha256":  "98251b608bb6cfefd28828c9e5fffc705a155f1212fa0cb82904c5bc2e417572",
+                                         "size":  1341
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/data-n-plus-one.md",
+                                         "sha256":  "f5c60f85f208161cd7567bb7cff0f559618814216a4426bb1351b51f75ec334d",
+                                         "size":  1414
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/data-pagination.md",
+                                         "sha256":  "c0bffeb6880c1f5b961e7c2ff36fd16686ebb09e5e49ed17499654beabea3e60",
+                                         "size":  1408
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/data-upsert.md",
+                                         "sha256":  "b366aa7da1e7929fba3011f99d949b2593967920d0c3c8572e07c0407c367054",
+                                         "size":  1440
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/lock-advisory.md",
+                                         "sha256":  "6d6b50c5ec9f85eb7aebbb1466e642e427c1732efa558488a9cae7ef9903febd",
+                                         "size":  1587
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/lock-deadlock-prevention.md",
+                                         "sha256":  "55f2074581d4db4996fc3ea1d3c120295209a70115f773e2c54f6b312405b293",
+                                         "size":  1923
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/lock-short-transactions.md",
+                                         "sha256":  "2538a22231c0dfde9967812b6bd5fb347287b671f72806495f89d0d0764e5fe6",
+                                         "size":  1400
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/lock-skip-locked.md",
+                                         "sha256":  "42c7492ba7f5d2c8ede9a5af072ea63deacf71e5695e022cae15b46b1ce4df13",
+                                         "size":  1407
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/monitor-explain-analyze.md",
+                                         "sha256":  "94881b47194cb164b1d2a004e79f181370af44ec830b9263e990e2710bd02b76",
+                                         "size":  1486
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/monitor-pg-stat-statements.md",
+                                         "sha256":  "812bf181876bacac5a2f914e7ffcf2a0a215b6d18dda752e65e75d926cbbcef4",
+                                         "size":  1473
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/monitor-vacuum-analyze.md",
+                                         "sha256":  "8d35221e676f13b122865d5df947a008c41367bd180010e52fde3c429e8552a9",
+                                         "size":  1561
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/query-composite-indexes.md",
+                                         "sha256":  "7e75d1b4d4431cb874ecc28710e95b7d2d7364511daa5d2c8e9d7de7ce1d0054",
+                                         "size":  1498
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/query-covering-indexes.md",
+                                         "sha256":  "028770393de8c0be6dcc7b9fb017f8209761d1854ebf433f036367e602f2d04d",
+                                         "size":  1327
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/query-index-types.md",
+                                         "sha256":  "5f054ce4f835091bb5ff89875deb5f8ade9e447e2ea62d1ca07382d104af0f2d",
+                                         "size":  1569
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/query-missing-indexes.md",
+                                         "sha256":  "15ddf120c86020612d2713225c850e0e4f022b38021f40f45e5bbe58f245dcc3",
+                                         "size":  1261
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/query-partial-indexes.md",
+                                         "sha256":  "106e2b88ff64115efa0a6b5f448d31788681493eeec05ad373f7c2ce6c8e0381",
+                                         "size":  1392
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/schema-constraints.md",
+                                         "sha256":  "d6e16d565c9832b70f8b1d472f7dc86dafa1351a44e8da72c88b48d337f73d7f",
+                                         "size":  1960
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/schema-data-types.md",
+                                         "sha256":  "df3197b3393f37b065396c2d3d2035d870d5d572ceaf6562e7c85559dcd11871",
+                                         "size":  1499
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/schema-foreign-key-indexes.md",
+                                         "sha256":  "b49a4e74ded6dd2a2bcf82d21fd22470c403b54cc526dc387f95c001c005c5d2",
+                                         "size":  1738
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/schema-lowercase-identifiers.md",
+                                         "sha256":  "e7e3e073df2fd787cc4e58dbfe1b7eb1f80439326042c5e73a69ae8a3b1dd734",
+                                         "size":  1783
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/schema-partitioning.md",
+                                         "sha256":  "d940ee09551e970f97c629e816502989c37f7dcea1df94b4b52f79f6eefc9971",
+                                         "size":  1603
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/schema-primary-keys.md",
+                                         "sha256":  "8e4350d0c4b0034fa843ef74716978729329543ff57fe9fad1d22e31a86ae0c5",
+                                         "size":  1882
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/security-privileges.md",
+                                         "sha256":  "079b20aba6ce8dbea81678fafdd95b4f9785440e91d07eb96029104597cb9693",
+                                         "size":  1620
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/security-rls-basics.md",
+                                         "sha256":  "e1b419ae752d06f6180a0dd61fa21cfdc2b19e34902495bd2827d3e6e350dfe3",
+                                         "size":  1422
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/references/security-rls-performance.md",
+                                         "sha256":  "b9defa5e5815a5dadf792b7c9ad7941eeaa1034082b3b06c9cd56083184022ad",
+                                         "size":  2166
+                                     },
+                                     {
+                                         "path":  "skills/supabase-postgres-best-practices/SKILL.md",
+                                         "sha256":  "4d7d1bd60f2ad7fd0d510269279519059dcc630d832f4c241d90735244c70525",
+                                         "size":  3295
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "ui-ux-pro-max",
+                       "description":  "Searchable design database for web and mobile UI: 161 color palettes by product type, 57 font pairings, 67 UI styles with CSS/AI-prompt keywords, 161 product-type patterns, landing page structures, chart selection rules, icon sets, and per-stack implementation guidelines for 16 stacks (React, Next.js, Vue, Nuxt, Svelte, Astro, Angular, Laravel, SwiftUI, React Native, Flutter, Jetpack Compose, Tailwind, shadcn/ui, Three.js). Use when picking a concrete palette, font pairing, visual style, or landing structure for a product type, or when you need stack-specific UI guidance. Also generates a persistable design system (MASTER.md + per-page overrides). Not needed for generic accessibility, contrast, spacing, or touch-target rules.",
+                       "rev":  "62b39885e08a",
+                       "files":  [
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/_sync_all.py",
+                                         "sha256":  "b540b3a4f87598ae29048b3cceae1fc17b39b629aee2cbe5c802ffc7b48abf6d",
+                                         "size":  21832
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/app-interface.csv",
+                                         "sha256":  "2a17ef810dab715ce1f339861817a8fbe3ccc38142b70517301e874803e838ac",
+                                         "size":  9743
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/charts.csv",
+                                         "sha256":  "ebb565308115f955791b0431797a89d9b3587c25d5babb9428d10712c4924817",
+                                         "size":  19391
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/colors.csv",
+                                         "sha256":  "69ee8c1147b269599d20ca418bdd6f32563a9aa2d962fb9a9b8dec66bf7b1ba4",
+                                         "size":  32432
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/design.csv",
+                                         "sha256":  "6f0ae42f16b3cbfa3f07050268387557859ff666e2651b1b82763f099d724b3f",
+                                         "size":  106144
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/draft.csv",
+                                         "sha256":  "e190c796b707858a5436dc4c27f9ee9bb6618014ca73f533e423abe5ce9e4d06",
+                                         "size":  106266
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/google-fonts.csv",
+                                         "sha256":  "2c03a3cd134d126bd9d6a7dc2a6360dc5272219ad6df3eb9315b031f806e1487",
+                                         "size":  745196
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/icons.csv",
+                                         "sha256":  "f376c29fb4df37b4bdb366a5aa70cb211ba3dd8b435390aaa03152a64b07d2e8",
+                                         "size":  20637
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/landing.csv",
+                                         "sha256":  "080cedbcd61ff8ec9520f33929baa76bee9589e783f83b2f8d824a466b6a46d7",
+                                         "size":  16720
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/products.csv",
+                                         "sha256":  "9fd9e776ba847cf44c1ea78f95fe5e33b2c56bb7e186e3cfff9c49bc7fcb691b",
+                                         "size":  58006
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/react-performance.csv",
+                                         "sha256":  "904c8afcda229629545912dde0e8ac37503757131f0169f80b016f1f58c4fd3f",
+                                         "size":  14822
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/angular.csv",
+                                         "sha256":  "dd7cc2a2b34cd8f0508bd05b067545e7a44f7724440c432d491d92a61a8fb6c1",
+                                         "size":  18269
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/astro.csv",
+                                         "sha256":  "ad18dae3ab6d148d37d144592df80dc1825b6c9e86d9d2d68fdda77434206a37",
+                                         "size":  11868
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/flutter.csv",
+                                         "sha256":  "fe36d404c799781e8ba6e9a8179b45799ed5126a545528550cd2eb0f2346e8c5",
+                                         "size":  10416
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/html-tailwind.csv",
+                                         "sha256":  "7aef38e75c53559470afcfa91580a9917ca8b7dbf8b92110389e23e93703ac52",
+                                         "size":  11305
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/jetpack-compose.csv",
+                                         "sha256":  "6c8fd4b0391c342c12b0af15610cd5becbeccaef0bbe8dcfc01d928c3195d93e",
+                                         "size":  8195
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/laravel.csv",
+                                         "sha256":  "50e11e60a64b30f329af25ae71f4b8bbdb43bafc1865451b74f9f540a88964d5",
+                                         "size":  18378
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/nextjs.csv",
+                                         "sha256":  "e828ccc04843742f52f545a068e8a9ab0d2b97c0e771f7e93bf0cef74da05554",
+                                         "size":  12493
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/nuxtjs.csv",
+                                         "sha256":  "f7a3f2d9542856d00199f85c6c023b7c284cc698e2e6e12d61afce2edacb24d6",
+                                         "size":  16539
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/nuxt-ui.csv",
+                                         "sha256":  "05d6e74501b2b6a636faed32450622759f49a5bcafad971f5f4e7eba0eb7be71",
+                                         "size":  14010
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/react.csv",
+                                         "sha256":  "e5624ab41d33427d88e41d07581ce4eca59b37b36ab72a6ad43a9c8e2d0a1c72",
+                                         "size":  12962
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/react-native.csv",
+                                         "sha256":  "a08ca77fcf6b6d9531982dce465366296013bfcf12d2938ac72ad57cf0c4f085",
+                                         "size":  10035
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/shadcn.csv",
+                                         "sha256":  "395c2e415ef6f48a474acccdc8eb2c7258a6ed751a5037ba171a2d8823e02ded",
+                                         "size":  15921
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/svelte.csv",
+                                         "sha256":  "71af52d64f266c88070b91dbbaa900c2f8074b6baae9f35eaea6ba9cec6fd803",
+                                         "size":  11009
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/swiftui.csv",
+                                         "sha256":  "c9c2d2510f8e66281a2514e8dd0125a6b653b9ef53a71281b5e7dfe003d5b569",
+                                         "size":  10821
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/threejs.csv",
+                                         "sha256":  "f1c05f8f269fc4784170c837f4ff43b50042f00bbd6ba7dbef2896081a052544",
+                                         "size":  44787
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/stacks/vue.csv",
+                                         "sha256":  "c2724915d3c11cd67263f25896cff721f787a0fdd8326002d31e9f5806dfd8f8",
+                                         "size":  11006
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/styles.csv",
+                                         "sha256":  "9b5089dcde8999333b36878252a255cc3bacbb2fe7b836c76cc7f7aa2abb643d",
+                                         "size":  142673
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/typography.csv",
+                                         "sha256":  "dbea262a54e3bfa2e6c3b15989a365d5ef4c43349316aff46635e82ca825adce",
+                                         "size":  49667
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/ui-reasoning.csv",
+                                         "sha256":  "41976082ecae1100da937c949215dc6694393e03f3c2a7444dd92a9edb43cb11",
+                                         "size":  53070
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/data/ux-guidelines.csv",
+                                         "sha256":  "1870ee048f2a2bdd60709f8f7adf7f3b6dcad560bc005c8b2915a8ac8639820d",
+                                         "size":  18766
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/LICENSE",
+                                         "sha256":  "738f69dfa83db5c347c678fb9d90e560877059f0de93a327c39001bff92dc014",
+                                         "size":  1075
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/scripts/core.py",
+                                         "sha256":  "772b4d567c7a948c5d4a10343473b4123fec04238d250c9ffce31d0733f752c0",
+                                         "size":  12393
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/scripts/design_system.py",
+                                         "sha256":  "f7a21e83739c5ac6ca3738846220f6a9eb7f3c1ae7a44989c5aaa2061ca60310",
+                                         "size":  47070
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/scripts/search.py",
+                                         "sha256":  "6a565f960a672e16dd064ccadd3406db999bfd1a4bff4d609b36a8d4c6450b86",
+                                         "size":  5607
+                                     },
+                                     {
+                                         "path":  "skills/ui-ux-pro-max/SKILL.md",
+                                         "sha256":  "e4d92ddafd4ed7bc6a72235e9f180a348312984b575281b6ad190236f99211c6",
+                                         "size":  5096
+                                     }
+                                 ]
+                   },
+                   {
+                       "name":  "unslop",
+                       "description":  "Turns vibecoded, AI-looking UI into a designed interface with its own character. Finds a direction from the product itself, then fixes spacing, color, icons, copy, type, layout, details, visuals and motion in that order, and can generate a real hero visual with an image tool when one is available. Use when the user asks to unslop, polish, clean up or redesign a screen so it stops looking AI-generated, or when a UI shows the usual tells like purple gradients, glows, gradient text, emoji labels, \"New ✨\" badges, glossy blobs, uppercase tracked labels, pulsing elements or uneven spacing. Works on React, Tailwind, HTML and CSS, for dashboards, apps and landing pages.",
+                       "rev":  "0cf02070c3bd",
+                       "files":  [
+                                     {
+                                         "path":  "skills/unslop/agents/openai.yaml",
+                                         "sha256":  "4e1da5f2a19ef9421ebd7fdc8c8382b6fc68e3df1838d34a0ada2b514ea53ab3",
+                                         "size":  200
+                                     },
+                                     {
+                                         "path":  "skills/unslop/LICENSE",
+                                         "sha256":  "d07988f4be47912f75a73b44da8a9c0b602bf6c8ced69de858b848f379ecd973",
+                                         "size":  19053
+                                     },
+                                     {
+                                         "path":  "skills/unslop/references/effects.md",
+                                         "sha256":  "e5631d5612bbbb69b6246db0b81bd9bca9551887b96508b73576a178ef1cc588",
+                                         "size":  4977
+                                     },
+                                     {
+                                         "path":  "skills/unslop/references/refs.md",
+                                         "sha256":  "44f3a285980346a83ea6f6f362b82612db9104d8bb6ea339e5055ddb7486b698",
+                                         "size":  2088
+                                     },
+                                     {
+                                         "path":  "skills/unslop/references/refs/beacon-engraving.webp",
+                                         "sha256":  "44e7680e9c944f03c8fe45df999bdf74077a106925a8189eebf89e751e306e5b",
+                                         "size":  569124
+                                     },
+                                     {
+                                         "path":  "skills/unslop/references/refs/meadow-3d.webp",
+                                         "sha256":  "84f526b68021a06fc6d32f162406fab6cc8074da1ef76d2ae4530e1b58219b14",
+                                         "size":  286608
+                                     },
+                                     {
+                                         "path":  "skills/unslop/references/refs/unslop-dashboard-after.webp",
+                                         "sha256":  "48067794f86b43dab20515b3810f245d67bff05d10bfa83c0f5885bee93cea52",
+                                         "size":  74724
+                                     },
+                                     {
+                                         "path":  "skills/unslop/references/refs/unslop-hero-after.webp",
+                                         "sha256":  "92b2d796c5b6116a2039f5ca2b0f3edf700c92b41846b11b9501a4e32f72af6e",
+                                         "size":  223664
+                                     },
+                                     {
+                                         "path":  "skills/unslop/references/signs.md",
+                                         "sha256":  "3a25ae4562e26ec8a1264035c4214594dea58f98edfcd594c6d542b7885b2287",
+                                         "size":  7141
+                                     },
+                                     {
+                                         "path":  "skills/unslop/references/tokens.md",
+                                         "sha256":  "234019529bf016cc35df37bfb61e69c524f421c342ae343310c391e764a4ea31",
+                                         "size":  6629
+                                     },
+                                     {
+                                         "path":  "skills/unslop/references/visuals.md",
+                                         "sha256":  "61da49f6ed02f22b199fe3aec7b819036108c1375991c76649267a30bdcff1ce",
+                                         "size":  8390
+                                     },
+                                     {
+                                         "path":  "skills/unslop/scripts/snapshot.mjs",
+                                         "sha256":  "dec907235241dd7f8ed68eb305225663d1dddde92cec3239ad3c2aabe1bbfa42",
+                                         "size":  6653
+                                     },
+                                     {
+                                         "path":  "skills/unslop/SKILL.md",
+                                         "sha256":  "62722f068ddd701e20af2f55895d33a85787c544d72005ad0da550e36f48f3f1",
+                                         "size":  25085
+                                     }
+                                 ]
+                   }
                ]
 }

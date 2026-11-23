@@ -1354,15 +1354,52 @@ function Get-Sha256([byte[]]$b) {
 # Скачивает файлы во временную папку и сверяет контрольные суммы. Ошибка: исключение, на месте ничего не тронуто.
 function Download-Files($files, [string]$stage, [scriptblock]$onFile) {
     $src = Get-Source
-    foreach ($f in @($files)) {
+    $list = @($files)
+    foreach ($f in $list) { if (-not (Test-SafeRel ([string]$f.path))) { throw "$(T 'upd_bad_path'): $($f.path)" } }
+    New-Item -ItemType Directory -Force -Path $stage | Out-Null
+    # сначала вся пачка одним запуском curl; чего не хватило или не сошлось, докачиваем по одному
+    if ($list.Count -gt 1) { try { Fetch-Batch (Get-RawBase $src) @($list | ForEach-Object { [string]$_.path }) $stage } catch {} }
+    foreach ($f in $list) {
         $rel = [string]$f.path
-        if (-not (Test-SafeRel $rel)) { throw "$(T 'upd_bad_path'): $rel" }
-        try { $bytes = [byte[]](& $FetchBlock $src $rel 30000) } catch { throw "$($rel): $(Friendly-Error $_.Exception.Message)" }
-        if ($f.sha256 -and (Get-Sha256 $bytes) -ne ([string]$f.sha256).ToLowerInvariant()) { throw "$($rel): $(T 'upd_verify_fail')" }
+        $want = ([string]$f.sha256).ToLowerInvariant()
         $dst = Join-Path $stage ($rel -replace '/', '\')
+        $bytes = $null
+        if (Test-Path -LiteralPath $dst) { $bytes = [IO.File]::ReadAllBytes($dst) }
+        if ($null -eq $bytes -or ($want -and (Get-Sha256 $bytes) -ne $want)) {
+            try { $bytes = [byte[]](& $FetchBlock $src $rel 30000) } catch { throw "$($rel): $(Friendly-Error $_.Exception.Message)" }
+        }
+        if ($want -and (Get-Sha256 $bytes) -ne $want) { throw "$($rel): $(T 'upd_verify_fail')" }
         New-Item -ItemType Directory -Force -Path (Split-Path $dst) | Out-Null
         [IO.File]::WriteAllBytes($dst, $bytes)
         if ($onFile) { & $onFile $rel }
+    }
+}
+# Адрес, от которого считаются пути файлов; для папки на диске $null.
+function Get-RawBase([string]$src) {
+    if (-not $src -or $src -match '^[a-zA-Z]:[\\/]|^\\\\') { return $null }
+    if ($src -match '^https?://') { return ($src.TrimEnd('/') + '/') }
+    $repo = $src; $branch = 'main'
+    if ($src -match '^(.+?)@(.+)$') { $repo = $Matches[1]; $branch = $Matches[2] }
+    "https://raw.githubusercontent.com/$repo/$branch/"
+}
+# Много файлов одним запуском curl.exe: соединение не открывается заново на каждый файл.
+# Пути относительные, curl работает в папке $stage, поэтому кириллица в пути ему не мешает.
+function Fetch-Batch([string]$base, [string[]]$rels, [string]$stage) {
+    $curl = Join-Path $env:SystemRoot 'System32\curl.exe'
+    if (-not $base -or -not (Test-Path -LiteralPath $curl)) { return }
+    for ($i = 0; $i -lt $rels.Count; $i += 40) {
+        $part = $rels[$i..([math]::Min($i + 39, $rels.Count - 1))]
+        $sb = New-Object Text.StringBuilder
+        [void]$sb.Append('-fsSL --create-dirs --max-time 300 -A ClaudeCodeLauncher -H "Cache-Control: no-cache"')
+        foreach ($rel in $part) {
+            $url = $base + (($rel -split '/' | ForEach-Object { [Uri]::EscapeDataString($_) }) -join '/')
+            [void]$sb.Append(" -o `"$($rel -replace '/', '\')`" `"$url`"")
+        }
+        $psi = New-Object Diagnostics.ProcessStartInfo $curl
+        $psi.Arguments = $sb.ToString(); $psi.WorkingDirectory = $stage
+        $psi.UseShellExecute = $false; $psi.CreateNoWindow = $true
+        $pr = [Diagnostics.Process]::Start($psi)
+        if (-not $pr.WaitForExit(330000)) { try { $pr.Kill() } catch {} }
     }
 }
 # Временная папка внутри папки лаунчера: %TEMP% бывает в коротком виде (C:\Users\9734~1), на нём Remove-Item падает.
