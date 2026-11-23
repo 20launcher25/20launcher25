@@ -1,0 +1,22 @@
+[
+  {
+    "version": "2.0.0",
+    "date": "2026-11-23",
+    "ru": [
+      "Обновления из GitHub: лаунчер сам проверяет новую версию, показывает «Что нового» и ставит её в один клик",
+      "Каталог скиллов: «Настройки → Установить скиллы» ставит скиллы из репозитория в ~/.claude/skills",
+      "«Сведения и лимиты»: аккаунт, план, лимиты подписки и версии программ",
+      "Мышь: щелчок по пункту открывает его, колесо листает список",
+      "«Проверка компонентов»: что не найдено на компьютере, где искали и как исправить, докачка недостающих файлов",
+      "Если лаунчер падает, на экране остаётся текст ошибки, а не пустое закрытое окно"
+    ],
+    "en": [
+      "GitHub updates: the launcher checks for a new version, shows what's new and installs it in one click",
+      "Skill catalog: Settings → Install skills puts skills from the repository into ~/.claude/skills",
+      "Info and limits: account, plan, subscription limits and program versions",
+      "Mouse: click an item to open it, scroll with the wheel",
+      "Component check: what is missing, where it was looked for and how to fix it, plus downloading missing files",
+      "If the launcher crashes, the error stays on screen instead of the window just closing"
+    ]
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "name": "launcher-limits-bar",
+  "version": "1.0.0",
+  "description": "A compact line above the prompt: current model, context and every rate-limit window with time until reset",
+  "types": "./types/index.d.ts"
+}

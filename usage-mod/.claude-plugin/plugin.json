@@ -1,0 +1,1 @@
+{ "name": "launcher-usage-export", "version": "1.0.0", "description": "Writes the current model and rate-limit windows to a file that Claude Code Launcher shows" }

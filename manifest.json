@@ -1,0 +1,97 @@
+{
+    "name":  "Claude Code Launcher",
+    "version":  "2.0.0",
+    "date":  "2026-11-23",
+    "changelog":  [
+                      {
+                          "version":  "2.0.0",
+                          "date":  "2026-11-23",
+                          "ru":  [
+                                     "Обновления из GitHub: лаунчер сам проверяет новую версию, показывает «Что нового» и ставит её в один клик",
+                                     "Каталог скиллов: «Настройки → Установить скиллы» ставит скиллы из репозитория в ~/.claude/skills",
+                                     "«Сведения и лимиты»: аккаунт, план, лимиты подписки и версии программ",
+                                     "Мышь: щелчок по пункту открывает его, колесо листает список",
+                                     "«Проверка компонентов»: что не найдено на компьютере, где искали и как исправить, докачка недостающих файлов",
+                                     "Если лаунчер падает, на экране остаётся текст ошибки, а не пустое закрытое окно"
+                                 ],
+                          "en":  [
+                                     "GitHub updates: the launcher checks for a new version, shows what\u0027s new and installs it in one click",
+                                     "Skill catalog: Settings → Install skills puts skills from the repository into ~/.claude/skills",
+                                     "Info and limits: account, plan, subscription limits and program versions",
+                                     "Mouse: click an item to open it, scroll with the wheel",
+                                     "Component check: what is missing, where it was looked for and how to fix it, plus downloading missing files",
+                                     "If the launcher crashes, the error stays on screen instead of the window just closing"
+                                 ]
+                      }
+                  ],
+    "files":  [
+                  {
+                      "path":  "launcher.ps1",
+                      "sha256":  "ebb177bb08830b61c0b1d41b2f10adffd55f4df0e7bfed6b29ba3d9ae48b33dc",
+                      "size":  143469
+                  },
+                  {
+                      "path":  "Install.cmd",
+                      "sha256":  "f0508d21f83a7857528a3a735c0c73990ec83736fb707b65816ca06f8cc3b84d",
+                      "size":  920
+                  },
+                  {
+                      "path":  "Uninstall.cmd",
+                      "sha256":  "5d1b6183283c19ca4a0f051ed2fe469cd322b89cbe167c9255874cf023748741",
+                      "size":  679
+                  },
+                  {
+                      "path":  "Repair.cmd",
+                      "sha256":  "6b8f2441417d0a317d90d6e15c91eef97ba46d8754f6294a1dd3fc6c3dcdc096",
+                      "size":  1226
+                  },
+                  {
+                      "path":  "README.txt",
+                      "sha256":  "110f78a898b18489a44e098a3ae91468ea3b06d3a064405abad18775613855f8",
+                      "size":  7426
+                  },
+                  {
+                      "path":  "REPAIR.md",
+                      "sha256":  "b8dfe6b8050c3913bcac077025a6e3831e68df07dd46799bf55539c904a4cba3",
+                      "size":  8868
+                  },
+                  {
+                      "path":  "usage-mod/.claude-plugin/plugin.json",
+                      "sha256":  "8e73587a57768102f1ea5d3041268d0c86415d786af22ae8f23cb6f091ecef31",
+                      "size":  164
+                  },
+                  {
+                      "path":  "usage-mod/hooks/hooks.json",
+                      "sha256":  "d842d789476d67282d0f04b7e5fdc68a3d981ccec65dd79cfa2d11eed13fb828",
+                      "size":  34
+                  },
+                  {
+                      "path":  "usage-mod/hooks/register.tsx",
+                      "sha256":  "3646147d8bb029d9ce3b0e4dc9fce15974312600ca81a30306f09e501981606f",
+                      "size":  2656
+                  },
+                  {
+                      "path":  "limits-bar/.claude-plugin/plugin.json",
+                      "sha256":  "d996956391129868a0950558e53c320afa19f7bd73bc1808b02020a7bcfee36d",
+                      "size":  217
+                  },
+                  {
+                      "path":  "limits-bar/hooks/hooks.json",
+                      "sha256":  "d842d789476d67282d0f04b7e5fdc68a3d981ccec65dd79cfa2d11eed13fb828",
+                      "size":  34
+                  },
+                  {
+                      "path":  "limits-bar/hooks/register.tsx",
+                      "sha256":  "b90b3ed0ff341da078868f6cfd5ede2b63391990630c215b0e040c8c8650a524",
+                      "size":  7602
+                  },
+                  {
+                      "path":  "limits-bar/types/index.d.ts",
+                      "sha256":  "4a6300c509962ea1512cbe6ff34f01ff4c86e776af38c5f5a9e1f6678fe7ed08",
+                      "size":  326
+                  }
+              ],
+    "skills":  [
+
+               ]
+}
